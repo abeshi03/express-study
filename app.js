@@ -6,6 +6,10 @@ app.get("/", (req, res) => {
   res.send("Hello world!")
 });
 
+app.get("/test", (req, res) => {
+  res.send("ルーティングのテスト")
+});
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 });
