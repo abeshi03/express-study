@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-
 router.get("/", (req, res) => {
   res.send("Hello world!")
 });
@@ -10,7 +9,7 @@ router.get("/", (req, res) => {
 router.get("/test", (req, res) => {
   res.json({
     user: {
-      name: "テスト名前",
+      name: "test_name",
       age: 18
     }
   })
