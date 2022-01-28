@@ -12,7 +12,8 @@
   "dependencies": {
     "@prisma/client": "^3.8.1",
     "@types/express": "^4.17.13",
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "moment": "^2.29.1"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",
