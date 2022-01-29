@@ -3,7 +3,7 @@ import { PrismaClient } from '@prisma/client'
 import { userRoutes } from "./interfaces/routes/user";
 
 const app: Application = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 
 const prisma = new PrismaClient();
