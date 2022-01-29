@@ -21,7 +21,7 @@ class ApiResponse<TData> {
     code?: number,
     message?: string
   ): ApiResponse<TData> {
-    return new ApiResponse(code || 500, message || "Internal Server Error.");
+    return new ApiResponse(code || 500, message || "Internal error.");
   }
 }
 
