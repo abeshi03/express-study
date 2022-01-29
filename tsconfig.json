@@ -6,12 +6,6 @@
     "outDir": "./dist",
     "strict": true,
     "lib": ["esnext"],
-    "esModuleInterop": true,
-    "include": [
-      "src/**/*.ts","prisma/**/*.ts"
-    ],
-    "exclude": [
-      "node_modules"
-    ]
+    "esModuleInterop": true
   }
 }
