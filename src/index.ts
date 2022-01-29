@@ -1,6 +1,6 @@
 import express, { Application } from "express";
 import { PrismaClient } from '@prisma/client'
-import { userRoutes } from "./interfaces/routes/user";
+import { userRoutes } from "./interfaces/routes/userRouter";
 
 const app: Application = express();
 const port = process.env.PORT || 5000;
