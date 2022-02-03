@@ -18,10 +18,10 @@ class ApiResponse<TData> {
   }
 
   public static error<TData>(
-    code?: number,
-    message?: string
+    code: number = 500,
+    message: string = "Internal error."
   ): ApiResponse<TData> {
-    return new ApiResponse(code || 500, message || "Internal error.");
+    return new ApiResponse(code, message);
   }
 }
 
