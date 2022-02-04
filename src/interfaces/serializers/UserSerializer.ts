@@ -1,5 +1,11 @@
 import { User } from "../../domain/User";
 
+export interface UsersResponse {
+  totalItemsCount: number;
+  itemsCountInSelection: number;
+  users__actualForSpecifiedPaginationPage: UserResponse[];
+}
+
 export interface UserResponse {
   id: number;
   email: string;
