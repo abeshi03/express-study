@@ -28,9 +28,9 @@ class UserRepository implements IUserRepository {
       orderBy: {
         id: "asc"
       },
-      take: query.itemsCountPerPaginationPage,
+      take: Number(query.itemsCountPerPaginationPage),
       skip:
-        (query.paginationPageNumber -1) * query.itemsCountPerPaginationPage
+        (Number(query.paginationPageNumber) -1) * Number(query.itemsCountPerPaginationPage)
     });
 
     return users.map((user: CreateUserPayload) => new User(user));
@@ -40,7 +40,7 @@ class UserRepository implements IUserRepository {
     return await this.prisma.user.count();
   }
 
-  public async ItemsCountInSelection(query: FindUserListParams): Promise<number> {
+  public async itemsCountInSelection(query: FindUserListParams): Promise<number> {
     return await this.prisma.user.count({
       where: {
         name: {
