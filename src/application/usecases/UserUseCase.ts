@@ -1,11 +1,11 @@
 import { User } from "../../domain/User";
-import { IUserRepository } from "../../interfaces/database/repository/IUserRepository";
+import { UserRepository } from "../../interfaces/database/repository/UserRepository";
 import { FindUserListParams } from "../../interfaces/request/user/FindUserListRequest";
 
 class UserUseCase {
-  private repository: IUserRepository;
+  private repository: UserRepository;
 
-  public constructor(repository: IUserRepository) {
+  public constructor(repository: UserRepository) {
     this.repository = repository;
   }
 

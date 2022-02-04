@@ -1,11 +1,11 @@
 import { PrismaClient } from "@prisma/client";
 
-import { IUserRepository } from "../repository/IUserRepository";
+import { UserRepository } from "../repository/UserRepository";
 import { User, CreateUserPayload } from "../../../domain/User";
 import { FindUserListParams } from "../../request/user/FindUserListRequest";
 
 
-class UserRepository implements IUserRepository {
+class UserRepositoryImpl implements UserRepository {
   private prisma: PrismaClient;
 
   public constructor(prisma: PrismaClient) {
@@ -52,4 +52,4 @@ class UserRepository implements IUserRepository {
 }
 
 
-export { UserRepository };
+export { UserRepositoryImpl };

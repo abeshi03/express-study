@@ -3,7 +3,7 @@ import { validationResult } from "express-validator";
 import { ApiResponse } from "../serializers/ApplicationSerializer";
 
 import { UserUseCase } from "../../application/usecases/UserUseCase";
-import { UserRepository } from "../database/PostgreSQL/UserRepositoryImpl";
+import { UserRepositoryImpl } from "../database/PostgreSQL/UserRepositoryImpl";
 import { UserSerializer, UsersResponse } from "../serializers/UserSerializer";
 import { FindUserListRequest } from "../request/user/FindUserListRequest";
 
@@ -12,7 +12,7 @@ class UserController {
   private serializer: UserSerializer;
 
   public constructor(prisma: PrismaClient) {
-    const repository = new UserRepository(prisma);
+    const repository = new UserRepositoryImpl(prisma);
     this.useCase = new UserUseCase(repository);
 
     this.serializer = new UserSerializer();
