@@ -1,7 +1,8 @@
 import { User } from "../../../domain/User";
+import { FindUserListParams } from "../../request/user/FindUserListRequest";
 
 interface IUserRepository {
-  findList: () => Promise<User[]>;
+  findList: (query: FindUserListParams) => Promise<User[]>;
 }
 
 

@@ -2,9 +2,9 @@ import { Request } from "express";
 
 
 export interface FindUserListParams {
-  paginationPageNumber?: number;
-  itemsCountPerPaginationPage?: number;
-  searchUserName?: string;
+  paginationPageNumber: number;
+  itemsCountPerPaginationPage: number;
+  searchByUserName?: string;
 }
 
 

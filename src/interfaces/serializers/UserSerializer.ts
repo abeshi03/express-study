@@ -23,7 +23,16 @@ export class UserSerializer {
     };
   }
 
-  public users(users: User[]): UserResponse[] {
-    return users.map((user: User) => this.user(user));
+  public users(
+    users: User[],
+    totalItemsCount: number,
+    itemsCountInSelection: number
+  ): UsersResponse {
+    const userResponses = users.map((user) => this.user(user));
+    return {
+      totalItemsCount: totalItemsCount,
+      itemsCountInSelection: itemsCountInSelection,
+      users__actualForSpecifiedPaginationPage: userResponses,
+    };
   }
 }
