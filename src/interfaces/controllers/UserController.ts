@@ -5,7 +5,7 @@ import { ApiResponse } from "../serializers/ApplicationSerializer";
 import { UserUseCase } from "../../application/usecases/UserUseCase";
 import { UserRepository } from "../database/PostgreSQL/UserRepositoryImpl";
 import { UserSerializer, UsersResponse } from "../serializers/UserSerializer";
-import { TFindUserListRequest } from "../request/user/FindUserListRequest";
+import { FindUserListRequest } from "../request/user/FindUserListRequest";
 
 class UserController {
   private useCase: UserUseCase;
@@ -18,7 +18,7 @@ class UserController {
     this.serializer = new UserSerializer();
   }
 
-  public async findList(request: TFindUserListRequest): Promise<ApiResponse<UsersResponse>> {
+  public async findList(request: FindUserListRequest): Promise<ApiResponse<UsersResponse>> {
 
     const errors = validationResult(request);
 

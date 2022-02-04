@@ -8,4 +8,4 @@ export interface FindUserListParams {
 }
 
 
-export type TFindUserListRequest = Request<FindUserListParams>;
+export type FindUserListRequest = Request<FindUserListParams>;
