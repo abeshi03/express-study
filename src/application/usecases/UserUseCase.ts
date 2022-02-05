@@ -6,6 +6,7 @@ import { FindUserListParams } from "../../interfaces/request/user/FindUserListRe
 
 /* --- db処理 -------------------------------------------------------------------------------------------------------- */
 import { UserRepository } from "../../interfaces/database/repository/UserRepository";
+import { UpdateUserParams } from "../../interfaces/request/user/UpdateUserRequest";
 
 class UserUseCase {
   private repository: UserRepository;
@@ -32,6 +33,12 @@ class UserUseCase {
   /* --- idでのユーザー取得 --------------------------------------------------------------------------------------------- */
   public find(targetUserId: number): Promise<User> {
     return this.repository.find(targetUserId);
+  }
+
+
+  /* --- ユーザー更新 -------------------------------------------------------------------------------------------------- */
+  public update(targetUserId: number, query: UpdateUserParams): Promise<void> {
+    return this.repository.update(targetUserId, query);
   }
 
 

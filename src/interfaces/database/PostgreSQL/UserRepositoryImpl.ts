@@ -9,6 +9,7 @@ import { UserRepository } from "../repository/UserRepository";
 
 /* --- リクエスト ----------------------------------------------------------------------------------------------------- */
 import { FindUserListParams } from "../../request/user/FindUserListRequest";
+import { UpdateUserParams } from "../../request/user/UpdateUserRequest";
 
 
 class UserRepositoryImpl implements UserRepository {
@@ -21,6 +22,7 @@ class UserRepositoryImpl implements UserRepository {
 
   /* --- ユーザー一覧取得 ----------------------------------------------------------------------------------------------- */
   public async findList(query: FindUserListParams): Promise<User[]> {
+
     const users = await this.prisma.user.findMany({
       select: {
         id: true,
@@ -61,6 +63,7 @@ class UserRepositoryImpl implements UserRepository {
 
   /* --- ユーザー取得 -------------------------------------------------------------------------------------------------- */
   public async find(targetUserId: number): Promise<User> {
+
     const user = await this.prisma.user.findUnique({
       select: {
         id: true,
@@ -78,6 +81,33 @@ class UserRepositoryImpl implements UserRepository {
   }
 
 
+  /* --- ユーザー更新 -------------------------------------------------------------------------------------------------- */
+  public async update(targetUserId: number, query: UpdateUserParams): Promise<void> {
+
+    const user = await this.prisma.user.findUnique({
+      where: {
+        id: targetUserId
+      }
+    });
+
+    if (!user) {
+      throw new Error("User not found");
+    }
+
+    await this.prisma.user.update({
+      where: {
+        id: targetUserId
+      },
+      data: {
+        id: query.id,
+        name: query.name,
+        email: query.email,
+        description: query.description
+      }
+    });
+  }
+
+
   /* --- ユーザー削除 -------------------------------------------------------------------------------------------------- */
   public async delete(targetUserId: number): Promise<void> {
 
@@ -91,13 +121,11 @@ class UserRepositoryImpl implements UserRepository {
       throw new Error("User not found");
     }
 
-    const deleteUser = this.prisma.user.delete({
+    await this.prisma.user.delete({
       where: {
         id: targetUserId
       }
     });
-
-    this.prisma.$transaction([ deleteUser ]);
   }
 
 }

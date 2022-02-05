@@ -8,6 +8,7 @@ import { UserController } from "../controllers/UserController";
 
 /* --- リクエスト ----------------------------------------------------------------------------------------------------- */
 import { FindUserListRequest } from "../request/user/FindUserListRequest";
+import { UpdateUserRequest } from "../request/user/UpdateUserRequest";
 
 const router = express.Router();
 
@@ -51,6 +52,22 @@ const userRoutes = (prisma: PrismaClient): express.Router => {
     ],
     async (req: express.Request, res: express.Response): Promise<void> => {
       const results = await userController.find(req);
+      res.status(results.code).send(results);
+    }
+  )
+
+
+  /* --- ユーザー更新 -------------------------------------------------------------------------------------------------- */
+  router.patch(
+    "/:id",
+    [
+      param("id")
+        .exists()
+        .isInt()
+        .withMessage("Invalid id")
+    ],
+    async (req: UpdateUserRequest, res: express.Response) => {
+      const results = await userController.update(req);
       res.status(results.code).send(results);
     }
   )

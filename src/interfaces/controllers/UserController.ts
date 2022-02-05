@@ -15,6 +15,7 @@ import { FindUserListRequest } from "../request/user/FindUserListRequest";
 /* --- レスポンス ----------------------------------------------------------------------------------------------------- */
 import { ApiResponse } from "../serializers/ApplicationSerializer";
 import { UserResponse, UserSerializer, UsersResponse } from "../serializers/UserSerializer";
+import { UpdateUserRequest } from "../request/user/UpdateUserRequest";
 
 
 class UserController {
@@ -77,6 +78,36 @@ class UserController {
       console.log(error);
       return ApiResponse.error(500, error.message);
     }
+  }
+
+
+  /* --- ユーザー更新 -------------------------------------------------------------------------------------------------- */
+  public async update(request: UpdateUserRequest): Promise<ApiResponse<null>> {
+
+    const errors = validationResult(request);
+
+    if (!errors.isEmpty()) {
+      return ApiResponse.error(422, errors.array()[0].msg);
+    }
+
+    try {
+
+      const userId = Number(request.params.id)
+
+      await this.useCase.update(userId, request.body);
+
+      return ApiResponse.success(null);
+
+    } catch (error: any) {
+
+      if (error.message === "User not found") {
+        return ApiResponse.error(404, error.message);
+      }
+
+      console.log(error);
+      return ApiResponse.error(500, error.message);
+    }
+
   }
 
 
