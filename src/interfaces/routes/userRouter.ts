@@ -43,10 +43,31 @@ const userRoutes = (prisma: PrismaClient): express.Router => {
   /* --- idでのユーザー取得 --------------------------------------------------------------------------------------------- */
   router.get(
     "/:id",
-    [param("id").isInt().withMessage("Invalid id")],
+    [
+      param("id")
+        .exists()
+        .isInt()
+        .withMessage("Invalid id")
+    ],
     async (req: express.Request, res: express.Response): Promise<void> => {
       const results = await userController.find(req);
       res.status(results.code).send(results);
+    }
+  )
+
+
+  /* --- idでのユーザー削除 --------------------------------------------------------------------------------------------- */
+  router.delete(
+    "/:id",
+    [
+      param("id")
+        .exists()
+        .isInt()
+        .withMessage("Invalid id")
+    ],
+    async (req: express.Request, res: express.Response): Promise<void> => {
+      const results = await userController.delete(req);
+      res.status(results.code).send(results)
     }
   )
 

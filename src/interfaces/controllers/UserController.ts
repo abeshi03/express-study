@@ -78,6 +78,34 @@ class UserController {
       return ApiResponse.error(500, error.message);
     }
   }
+
+
+  /* --- ユーザー削除 -------------------------------------------------------------------------------------------------- */
+  public async delete(request: Request): Promise<ApiResponse<null>> {
+
+    const errors = validationResult(request);
+
+    if (!errors.isEmpty()) {
+      return ApiResponse.error(422, errors.array()[0].msg);
+    }
+
+    try {
+
+      const userId = Number(request.params.id);
+      await this.useCase.delete(userId);
+
+      return ApiResponse.success(null);
+
+    } catch (error: any) {
+
+      if (error.message === "User not found") {
+        return ApiResponse.error(404, error.message);
+      }
+
+      console.log(error);
+      return ApiResponse.error(500, error.message);
+    }
+  }
 }
 
 export { UserController };

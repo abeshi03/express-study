@@ -33,6 +33,12 @@ class UserUseCase {
   public find(targetUserId: number): Promise<User> {
     return this.repository.find(targetUserId);
   }
+
+
+  /* --- ユーザー削除 -------------------------------------------------------------------------------------------------- */
+  public delete(targetUserId: number): Promise<void> {
+    return this.repository.delete(targetUserId);
+  }
 }
 
 export { UserUseCase };

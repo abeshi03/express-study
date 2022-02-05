@@ -76,6 +76,30 @@ class UserRepositoryImpl implements UserRepository {
 
     return new User(user);
   }
+
+
+  /* --- ユーザー削除 -------------------------------------------------------------------------------------------------- */
+  public async delete(targetUserId: number): Promise<void> {
+
+    const user = await this.prisma.user.findUnique({
+      where: {
+        id: targetUserId
+      }
+    });
+
+    if (!user) {
+      throw new Error("User not found");
+    }
+
+    const deleteUser = this.prisma.user.delete({
+      where: {
+        id: targetUserId
+      }
+    });
+
+    this.prisma.$transaction([ deleteUser ]);
+  }
+
 }
 
 
