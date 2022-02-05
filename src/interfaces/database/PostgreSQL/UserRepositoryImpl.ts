@@ -12,6 +12,7 @@ class UserRepositoryImpl implements UserRepository {
     this.prisma = prisma;
   }
 
+  /* ユーザー一覧取得 ================================================================================================== */
   public async findList(query: FindUserListParams): Promise<User[]> {
     const users = await this.prisma.user.findMany({
       select: {
@@ -48,6 +49,24 @@ class UserRepositoryImpl implements UserRepository {
         }
       }
     });
+  }
+
+  /* ユーザー取得 ===================================================================================================== */
+  public async find(targetUserId: number): Promise<User> {
+    const user = await this.prisma.user.findUnique({
+      select: {
+        id: true,
+        name: true,
+        description: true,
+        email: true
+      },
+      where: {
+        id: targetUserId
+      },
+      rejectOnNotFound: true
+    });
+
+    return new User(user);
   }
 }
 
