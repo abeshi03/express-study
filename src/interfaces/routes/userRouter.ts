@@ -1,8 +1,12 @@
+/* --- フレームワーク、ライブラリー --------------------------------------------------------------------------------------- */
 import express from "express";
-import { query } from "express-validator";
+import { param, query } from "express-validator";
 import { PrismaClient } from "@prisma/client";
 
+/* --- コントローラー -------------------------------------------------------------------------------------------------- */
 import { UserController } from "../controllers/UserController";
+
+/* --- リクエスト ----------------------------------------------------------------------------------------------------- */
 import { FindUserListRequest } from "../request/user/FindUserListRequest";
 
 const router = express.Router();
@@ -11,7 +15,8 @@ const router = express.Router();
 const userRoutes = (prisma: PrismaClient): express.Router => {
   const userController = new UserController(prisma);
 
-  /* ユーザー一覧取得 ================================================================================================== */
+
+  /* --- ユーザー一覧取得 ----------------------------------------------------------------------------------------------- */
   router.get(
     "/",
     [
@@ -34,10 +39,11 @@ const userRoutes = (prisma: PrismaClient): express.Router => {
   );
 
 
-  /* idでのユーザー取得 ================================================================================================ */
+
+  /* --- idでのユーザー取得 --------------------------------------------------------------------------------------------- */
   router.get(
     "/:id",
-    [],
+    [param("id").isInt().withMessage("Invalid id")],
     async (req: express.Request, res: express.Response): Promise<void> => {
       const results = await userController.find(req);
       res.status(results.code).send(results);

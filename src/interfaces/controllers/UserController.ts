@@ -1,12 +1,20 @@
+/* --- フレームワーク、ライブラリー --------------------------------------------------------------------------------------- */
 import { PrismaClient } from "@prisma/client";
 import { validationResult } from "express-validator";
-import { ApiResponse } from "../serializers/ApplicationSerializer";
-
-import { UserUseCase } from "../../application/usecases/UserUseCase";
-import { UserRepositoryImpl } from "../database/PostgreSQL/UserRepositoryImpl";
-import { UserResponse, UserSerializer, UsersResponse } from "../serializers/UserSerializer";
-import { FindUserListRequest } from "../request/user/FindUserListRequest";
 import { Request } from "express";
+
+/* --- ユースケース ---------------------------------------------------------------------------------------------------- */
+import { UserUseCase } from "../../application/usecases/UserUseCase";
+
+/* --- db関連 -------------------------------------------------------------------------------------------------------- */
+import { UserRepositoryImpl } from "../database/PostgreSQL/UserRepositoryImpl";
+
+/* --- リクエスト ------------------------------------------------------------------------------------------------------ */
+import { FindUserListRequest } from "../request/user/FindUserListRequest";
+
+/* --- レスポンス ----------------------------------------------------------------------------------------------------- */
+import { ApiResponse } from "../serializers/ApplicationSerializer";
+import { UserResponse, UserSerializer, UsersResponse } from "../serializers/UserSerializer";
 
 
 class UserController {
@@ -20,7 +28,8 @@ class UserController {
     this.serializer = new UserSerializer();
   }
 
-  /* ユーザー一覧取得 ================================================================================================== */
+
+  /* --- ユーザー一覧取得 ----------------------------------------------------------------------------------------------- */
   public async findList(request: FindUserListRequest): Promise<ApiResponse<UsersResponse>> {
 
     const errors = validationResult(request);
@@ -46,7 +55,7 @@ class UserController {
   }
 
 
-  /* idでのユーザー取得 ================================================================================================ */
+  /* --- idでのユーザー取得 --------------------------------------------------------------------------------------------- */
   public async find(request: Request): Promise<ApiResponse<UserResponse>> {
 
     const errors = validationResult(request);
@@ -59,8 +68,9 @@ class UserController {
 
       const userId = Number(request.params.id);
       const user = await this.useCase.find(userId);
+      const response = this.serializer.user(user);
 
-      return ApiResponse.success(user);
+      return ApiResponse.success(response);
 
     } catch (error: any) {
 

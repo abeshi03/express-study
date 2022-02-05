@@ -1,6 +1,11 @@
+/* --- 実態 ---------------------------------------------------------------------------------------------------------- */
 import { User } from "../../domain/User";
-import { UserRepository } from "../../interfaces/database/repository/UserRepository";
+
+/* --- リクエスト ----------------------------------------------------------------------------------------------------- */
 import { FindUserListParams } from "../../interfaces/request/user/FindUserListRequest";
+
+/* --- db処理 -------------------------------------------------------------------------------------------------------- */
+import { UserRepository } from "../../interfaces/database/repository/UserRepository";
 
 class UserUseCase {
   private repository: UserRepository;
@@ -9,7 +14,8 @@ class UserUseCase {
     this.repository = repository;
   }
 
-  /* ユーザー一覧取得 ================================================================================================== */
+
+  /* --- ユーザー一覧取得 ----------------------------------------------------------------------------------------------- */
   public findList(query: FindUserListParams): Promise<User[]> {
     return this.repository.findList(query);
   }
@@ -23,7 +29,7 @@ class UserUseCase {
   }
 
 
-  /* idでのユーザー取得 ================================================================================================ */
+  /* --- idでのユーザー取得 --------------------------------------------------------------------------------------------- */
   public find(targetUserId: number): Promise<User> {
     return this.repository.find(targetUserId);
   }

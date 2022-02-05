@@ -14,6 +14,8 @@ export interface UserResponse {
 }
 
 export class UserSerializer {
+
+  /* --- ユーザーレスポンス --------------------------------------------------------------------------------------------- */
   public user(user: User): UserResponse {
     return {
       id: user.id,
@@ -23,6 +25,8 @@ export class UserSerializer {
     };
   }
 
+
+  /* --- ユーザー一覧レスポンス ------------------------------------------------------------------------------------------ */
   public users(
     users: User[],
     totalItemsCount: number,

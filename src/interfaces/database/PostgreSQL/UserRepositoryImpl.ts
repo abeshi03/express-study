@@ -1,7 +1,13 @@
+/* --- フレームワーク、ライブラリー --------------------------------------------------------------------------------------- */
 import { PrismaClient } from "@prisma/client";
 
-import { UserRepository } from "../repository/UserRepository";
+/* --- 実態 ---------------------------------------------------------------------------------------------------------- */
 import { User, CreateUserPayload } from "../../../domain/User";
+
+/* --- db関連 -------------------------------------------------------------------------------------------------------- */
+import { UserRepository } from "../repository/UserRepository";
+
+/* --- リクエスト ----------------------------------------------------------------------------------------------------- */
 import { FindUserListParams } from "../../request/user/FindUserListRequest";
 
 
@@ -12,7 +18,8 @@ class UserRepositoryImpl implements UserRepository {
     this.prisma = prisma;
   }
 
-  /* ユーザー一覧取得 ================================================================================================== */
+
+  /* --- ユーザー一覧取得 ----------------------------------------------------------------------------------------------- */
   public async findList(query: FindUserListParams): Promise<User[]> {
     const users = await this.prisma.user.findMany({
       select: {
@@ -51,7 +58,8 @@ class UserRepositoryImpl implements UserRepository {
     });
   }
 
-  /* ユーザー取得 ===================================================================================================== */
+
+  /* --- ユーザー取得 -------------------------------------------------------------------------------------------------- */
   public async find(targetUserId: number): Promise<User> {
     const user = await this.prisma.user.findUnique({
       select: {
