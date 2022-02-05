@@ -7,6 +7,7 @@ import { FindUserListParams } from "../../interfaces/request/user/FindUserListRe
 /* --- db処理 -------------------------------------------------------------------------------------------------------- */
 import { UserRepository } from "../../interfaces/database/repository/UserRepository";
 import { UpdateUserParams } from "../../interfaces/request/user/UpdateUserRequest";
+import { CreateUserParams } from "../../interfaces/request/user/CreateUserRequest";
 
 class UserUseCase {
   private repository: UserRepository;
@@ -33,6 +34,12 @@ class UserUseCase {
   /* --- idでのユーザー取得 --------------------------------------------------------------------------------------------- */
   public find(targetUserId: number): Promise<User> {
     return this.repository.find(targetUserId);
+  }
+
+
+  /* --- ユーザー追加 -------------------------------------------------------------------------------------------------- */
+  public create(query: CreateUserParams): Promise<number> {
+    return this.repository.create(query);
   }
 
 

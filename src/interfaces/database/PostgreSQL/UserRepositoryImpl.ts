@@ -10,6 +10,7 @@ import { UserRepository } from "../repository/UserRepository";
 /* --- リクエスト ----------------------------------------------------------------------------------------------------- */
 import { FindUserListParams } from "../../request/user/FindUserListRequest";
 import { UpdateUserParams } from "../../request/user/UpdateUserRequest";
+import { CreateUserParams } from "../../request/user/CreateUserRequest";
 
 
 class UserRepositoryImpl implements UserRepository {
@@ -78,6 +79,22 @@ class UserRepositoryImpl implements UserRepository {
     });
 
     return new User(user);
+  }
+
+
+  /* --- ユーザー追加 -------------------------------------------------------------------------------------------------- */
+  public async create(query: CreateUserParams): Promise<number> {
+
+    const user = await this.prisma.user.create({
+      data: {
+        name: query.name,
+        description: query.description,
+        email: query.email,
+        createdAt: new Date()
+      }
+    });
+
+    return user.id;
   }
 
 

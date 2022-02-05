@@ -13,6 +13,10 @@ export interface UserResponse {
   description: string;
 }
 
+export interface IdResponse {
+  id: number;
+}
+
 export class UserSerializer {
 
   /* --- ユーザーレスポンス --------------------------------------------------------------------------------------------- */
@@ -38,5 +42,11 @@ export class UserSerializer {
       itemsCountInSelection: itemsCountInSelection,
       users__actualForSpecifiedPaginationPage: userResponses,
     };
+  }
+
+
+  /* --- ユーザーidレスポンス ------------------------------------------------------------------------------------------- */
+  public id(id: number): IdResponse {
+    return { id };
   }
 }

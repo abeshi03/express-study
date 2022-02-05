@@ -14,8 +14,14 @@ import { FindUserListRequest } from "../request/user/FindUserListRequest";
 
 /* --- レスポンス ----------------------------------------------------------------------------------------------------- */
 import { ApiResponse } from "../serializers/ApplicationSerializer";
-import { UserResponse, UserSerializer, UsersResponse } from "../serializers/UserSerializer";
+import {
+  IdResponse,
+  UserResponse,
+  UserSerializer,
+  UsersResponse
+} from "../serializers/UserSerializer";
 import { UpdateUserRequest } from "../request/user/UpdateUserRequest";
+import { CreateUserRequest } from "../request/user/CreateUserRequest";
 
 
 class UserController {
@@ -70,6 +76,30 @@ class UserController {
       const userId = Number(request.params.id);
       const user = await this.useCase.find(userId);
       const response = this.serializer.user(user);
+
+      return ApiResponse.success(response);
+
+    } catch (error: any) {
+
+      console.log(error);
+      return ApiResponse.error(500, error.message);
+    }
+  }
+
+
+  /* --- ユーザー追加 -------------------------------------------------------------------------------------------------- */
+  public async create(request: CreateUserRequest): Promise<ApiResponse<IdResponse>> {
+
+    const errors = validationResult(request);
+
+    if (!errors.isEmpty()) {
+      return ApiResponse.error(422, errors.array()[0].msg);
+    }
+
+    try {
+
+      const id = await this.useCase.create(request.body);
+      const response = this.serializer.id(id);
 
       return ApiResponse.success(response);
 
