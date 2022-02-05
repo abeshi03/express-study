@@ -11,6 +11,7 @@ const router = express.Router();
 const userRoutes = (prisma: PrismaClient): express.Router => {
   const userController = new UserController(prisma);
 
+  /* ユーザー一覧取得 ================================================================================================== */
   router.get(
     "/",
     [
@@ -31,6 +32,17 @@ const userRoutes = (prisma: PrismaClient): express.Router => {
       res.status(results.code).send(results);
     }
   );
+
+
+  /* idでのユーザー取得 ================================================================================================ */
+  router.get(
+    "/:id",
+    [],
+    async (req: express.Request, res: express.Response): Promise<void> => {
+      const results = await userController.find(req);
+      res.status(results.code).send(results);
+    }
+  )
 
   return router;
 };
