@@ -1,6 +1,6 @@
 /* --- フレームワーク、ライブラリー --------------------------------------------------------------------------------------- */
 import express from "express";
-import {body, param, query} from "express-validator";
+import { body, param, query } from "express-validator";
 import { PrismaClient } from "@prisma/client";
 
 /* --- コントローラー -------------------------------------------------------------------------------------------------- */
@@ -14,16 +14,16 @@ import { CreateUserRequest } from "../request/user/CreateUserRequest";
 const router = express.Router();
 
 const createValidationChain = [
-  body("email")
-    .exists()
-    .withMessage("email is missing")
-    .isString()
-    .withMessage("Invalid email"),
   body("name")
     .exists()
     .withMessage("name is missing")
     .isString()
     .withMessage("Invalid name"),
+  body("email")
+    .exists()
+    .withMessage("email is missing")
+    .isString()
+    .withMessage("Invalid email"),
   body("description")
     .exists()
     .withMessage("description is missing")
@@ -95,7 +95,7 @@ const userRoutes = (prisma: PrismaClient): express.Router => {
         .exists()
         .isInt()
         .withMessage("Invalid id")
-    ],
+    ].concat(createValidationChain),
     async (req: UpdateUserRequest, res: express.Response) => {
       const results = await userController.update(req);
       res.status(results.code).send(results);
