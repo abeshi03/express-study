@@ -3,7 +3,7 @@ import { User } from "../../domain/User";
 export interface UsersResponse {
   totalItemsCount: number;
   itemsCountInSelection: number;
-  users__actualForSpecifiedPaginationPage: UserResponse[];
+  users: UserResponse[];
 }
 
 export interface UserResponse {
@@ -40,7 +40,7 @@ export class UserSerializer {
     return {
       totalItemsCount: totalItemsCount,
       itemsCountInSelection: itemsCountInSelection,
-      users__actualForSpecifiedPaginationPage: userResponses,
+      users: userResponses,
     };
   }
 
