@@ -130,16 +130,20 @@ const usersData: Prisma.UserCreateInput[] = [
 
 
 async function createSeedData() {
-  for (const user of usersData) {
-    await prisma.user.create({ data: user });
+
+  try {
+
+    for (const user of usersData) {
+      await prisma.user.create({ data: user });
+    }
+  } catch (error: unknown) {
+
+    console.error(error);
+    process.exit(1);
+  } finally {
+
+    await prisma.$disconnect();
   }
 }
 
-createSeedData()
-  .catch((error) => {
-    console.error(error);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect()
-  });
+createSeedData();
