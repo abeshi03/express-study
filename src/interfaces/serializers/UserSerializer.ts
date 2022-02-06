@@ -2,7 +2,7 @@
 import { User } from "../../domain/User";
 
 /* --- db関連 -------------------------------------------------------------------------------------------------------- */
-import { UserRepository}  from "../database/repository/UserRepository";
+import { UserRepository }  from "../database/repository/UserRepository";
 
 export interface UsersResponse {
   totalItemsCount: number;
