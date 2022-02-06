@@ -18,16 +18,8 @@ class UserUseCase {
 
 
   /* --- ユーザー一覧取得 ----------------------------------------------------------------------------------------------- */
-  public findList(query: FindUserListParams): Promise<User[]> {
+  public findList(query: FindUserListParams): Promise<UserRepository.FindList.ResponseData> {
     return this.repository.findList(query);
-  }
-
-  public totalItemsCount(): Promise<number> {
-    return this.repository.totalItemsCount();
-  }
-
-  public itemsCountInSelection(query: FindUserListParams): Promise<number> {
-    return this.repository.itemsCountInSelection(query);
   }
 
 

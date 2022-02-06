@@ -22,7 +22,7 @@ class UserRepositoryImpl implements UserRepository {
 
 
   /* --- ユーザー一覧取得 ----------------------------------------------------------------------------------------------- */
-  public async findList(query: FindUserListParams): Promise<User[]> {
+  public async findList(query: FindUserListParams): Promise<UserRepository.FindList.ResponseData> {
 
     const users = await this.prisma.user.findMany({
       select: {
@@ -44,21 +44,22 @@ class UserRepositoryImpl implements UserRepository {
         (Number(query.paginationPageNumber) -1) * Number(query.itemsCountPerPaginationPage)
     });
 
-    return users.map((user: CreateUserPayload) => new User(user));
-  }
-
-  public async totalItemsCount(): Promise<number> {
-    return await this.prisma.user.count();
-  }
-
-  public async itemsCountInSelection(query: FindUserListParams): Promise<number> {
-    return await this.prisma.user.count({
+    users.map((user: CreateUserPayload) => new User(user));
+    const totalItemsCount = await this.prisma.user.count();
+    const itemsCountInSelection = await this.prisma.user.count({
       where: {
         name: {
           contains: query.searchByUserName
         }
       }
     });
+
+    return {
+      users: users.map((user: CreateUserPayload) => new User(user)),
+      totalItemsCount,
+      itemsCountInSelection
+    }
+
   }
 
 

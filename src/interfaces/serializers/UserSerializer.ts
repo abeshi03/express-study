@@ -1,4 +1,8 @@
+/* --- 実態 ---------------------------------------------------------------------------------------------------------- */
 import { User } from "../../domain/User";
+
+/* --- db関連 -------------------------------------------------------------------------------------------------------- */
+import { UserRepository}  from "../database/repository/UserRepository";
 
 export interface UsersResponse {
   totalItemsCount: number;
@@ -32,14 +36,12 @@ export class UserSerializer {
 
   /* --- ユーザー一覧レスポンス ------------------------------------------------------------------------------------------ */
   public users(
-    users: User[],
-    totalItemsCount: number,
-    itemsCountInSelection: number
+    items: UserRepository.FindList.ResponseData
   ): UsersResponse {
-    const userResponses = users.map((user) => this.user(user));
+    const userResponses = items.users.map((user) => this.user(user));
     return {
-      totalItemsCount: totalItemsCount,
-      itemsCountInSelection: itemsCountInSelection,
+      totalItemsCount: items.totalItemsCount,
+      itemsCountInSelection: items.itemsCountInSelection,
       users: userResponses,
     };
   }

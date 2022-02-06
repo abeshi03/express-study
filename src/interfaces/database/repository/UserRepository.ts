@@ -9,9 +9,7 @@ import { CreateUserParams } from "../../request/user/CreateUserRequest";
 interface UserRepository {
 
   /* --- ユーザー一覧関連 ----------------------------------------------------------------------------------------------- */
-  findList: (query: FindUserListParams) => Promise<User[]>;
-  totalItemsCount: () => Promise<number>;
-  itemsCountInSelection: (query: FindUserListParams) => Promise<number>;
+  findList: (query: FindUserListParams) => Promise<UserRepository.FindList.ResponseData>;
 
   /* --- ユーザー詳細関連 ----------------------------------------------------------------------------------------------- */
   find: (targetUserId: number) => Promise<User>;
@@ -26,5 +24,16 @@ interface UserRepository {
   delete: (targetUserId: number) => Promise<void>;
 }
 
+namespace UserRepository {
+
+  export namespace FindList {
+
+    export type ResponseData = {
+      totalItemsCount: number;
+      itemsCountInSelection: number;
+      users: User[];
+    }
+  }
+}
 
 export { UserRepository };

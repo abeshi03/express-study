@@ -48,9 +48,7 @@ class UserController {
     try {
 
       const users = await this.useCase.findList(request.query);
-      const totalItemsCount = await this.useCase.totalItemsCount();
-      const itemsCountInSelection = await this.useCase.itemsCountInSelection(request.query);
-      const response = this.serializer.users(users, totalItemsCount, itemsCountInSelection);
+      const response = this.serializer.users(users);
 
       return ApiResponse.success(response);
 
