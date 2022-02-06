@@ -8,6 +8,7 @@ const port = process.env.PORT || 5000;
 
 const prisma = new PrismaClient();
 
+app.use(express.json());
 
 app.get("/", (req: express.Request, res: express.Response) => {
   res.send("Hello world!")
