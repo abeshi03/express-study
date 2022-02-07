@@ -19,6 +19,8 @@ paths:
       $ref: "./paths/users/create.yaml"
     patch:
       $ref: "./paths/users/update.yaml"
+    delete:
+      $ref: "./paths/users/delete.yaml"
 components:
   schemas:
     User:
