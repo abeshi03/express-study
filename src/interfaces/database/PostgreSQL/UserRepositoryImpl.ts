@@ -122,7 +122,8 @@ class UserRepositoryImpl implements UserRepository {
         id: query.id,
         name: query.name,
         email: query.email,
-        description: query.description
+        description: query.description,
+        avatarUri: query.avatarUri
       }
     });
   }
