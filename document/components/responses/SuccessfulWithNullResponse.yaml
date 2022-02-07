@@ -1,0 +1,19 @@
+description: 成功
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        code:
+          type: number
+          example: 200
+        message:
+          type: string
+          example: Success
+        data:
+          type: string
+          nullable: true
+          example: null
+        respondedAt:
+          type: string
+          example: '2022-01-01T00:00:00+09:00'

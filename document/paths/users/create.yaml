@@ -1,0 +1,17 @@
+tags:
+  - Users
+summary: ユーザーの作成
+description: ユーザーの作成
+requestBody:
+  description: ユーザーの内容
+  content:
+    application/json:
+      schema:
+        $ref: "../../schemas/User.yaml"
+responses:
+  200:
+    $ref: "../../components/responses/SuccessfulWithIdResponse.yaml"
+  422:
+    description: 不正なbodyパラメータ
+  500:
+    description: サーバーエラー

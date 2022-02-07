@@ -1,0 +1,17 @@
+tags:
+  - Users
+summary: ユーザーの削除
+description: ユーザーの削除
+requestBody:
+  description: ユーザーの内容
+  content:
+    application/json:
+      schema:
+        $ref: "../../schemas/User.yaml"
+responses:
+  200:
+    $ref: "../../components/responses/SuccessfulWithNullResponse.yaml"
+  422:
+    description: 不正なbodyパラメータ
+  500:
+    description: サーバーエラー
