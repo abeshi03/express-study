@@ -1,0 +1,10 @@
+openapi: 3.0.1
+info:
+  title: 学習用サンプル
+  description: swagger学習用のサンプルです
+  version: 1.0.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: http://localhost:5000/ # サンプルURL
