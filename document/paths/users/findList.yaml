@@ -1,0 +1,50 @@
+tags:
+  - Users
+summary: ユーザー一覧取得
+description: ユーザーの一覧取得、ページネーション
+parameters:
+  - name: paginationPageNumber
+    in: query
+    description: ページネーションのページ番号
+    required: true
+    schema:
+      type: number
+    example: 1
+  - name: itemsCountPerPaginationPage
+    in: query
+    description: ページネーション毎のアイテム数
+    required: true
+    schema:
+      type: number
+    example: 10
+  - name: searchByUserName
+    in: query
+    description: 名前の検索キーワード
+    schema:
+      type: string
+    example: "USER1"
+responses:
+  200:
+    description: 成功
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            totalItemsCount:
+              type: number
+              description: 全データ数
+              example: 100
+            itemsCountInSelection:
+              type: number
+              description: 任意フィルタリング後のデータ数
+              example: 1
+            users:
+              type: array
+              description: ユーザーの配列
+              items:
+                $ref: "../../schemas/User.yaml"
+  422:
+    description: 不正なqueryパラメータ
+  500:
+    description: サーバーエラー

@@ -9,6 +9,9 @@ info:
 servers:
   - url: http://localhost:5000/ # サンプルURL
 paths:
+  /users:
+    get:
+      $ref: "./paths/users/findList.yaml"
   /users/{id}:
     get:
       $ref: "./paths/users/find.yaml"
@@ -16,3 +19,4 @@ components:
   schemas:
     User:
       $ref: "./schemas/User.yaml"
+
