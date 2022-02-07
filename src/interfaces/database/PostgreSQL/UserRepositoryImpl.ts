@@ -29,7 +29,8 @@ class UserRepositoryImpl implements UserRepository {
         id: true,
         name: true,
         description: true,
-        email: true
+        email: true,
+        avatarUri: true
       },
       where: {
         name: {
@@ -71,7 +72,8 @@ class UserRepositoryImpl implements UserRepository {
         id: true,
         name: true,
         description: true,
-        email: true
+        email: true,
+        avatarUri: true
       },
       where: {
         id: targetUserId

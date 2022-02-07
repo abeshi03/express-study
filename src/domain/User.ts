@@ -3,6 +3,7 @@ interface CreateUserPayload {
   email: string;
   name: string;
   description: string;
+  avatarUri?: string | null;
 }
 
 class User {
@@ -10,6 +11,7 @@ class User {
   private readonly _email: string;
   private readonly _name: string;
   private readonly _description: string;
+  private readonly _avatarUri?: string | null;
 
   public get id(): number {
     return this._id;
@@ -23,12 +25,19 @@ class User {
   public get description(): string {
     return this._description;
   }
+  public get avatarUri(): string | undefined {
+    if (!this._avatarUri) {
+      return undefined;
+    }
+    return this._avatarUri;
+  }
 
   public constructor(payload: CreateUserPayload) {
     this._id = payload.id;
     this._email = payload.email;
     this._name = payload.name;
     this._description = payload.description;
+    this._avatarUri = payload.avatarUri;
   }
 }
 

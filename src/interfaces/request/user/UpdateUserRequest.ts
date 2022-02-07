@@ -5,6 +5,7 @@ export interface UpdateUserParams {
   email: string;
   name: string;
   description: string;
+  avatarUri: string;
 }
 
 export type UpdateUserRequest = Request<UpdateUserParams>;

@@ -28,7 +28,12 @@ const createValidationChain = [
     .exists()
     .withMessage("description is missing")
     .isString()
-    .withMessage("Invalid description")
+    .withMessage("Invalid description"),
+  body("avatarUri")
+    .exists()
+    .withMessage("avatarUri is missing")
+    .isString()
+    .withMessage("Invalid avatarUri")
 ];
 
 
