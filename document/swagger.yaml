@@ -17,6 +17,8 @@ paths:
       $ref: "./paths/users/find.yaml"
     post:
       $ref: "./paths/users/create.yaml"
+    patch:
+      $ref: "./paths/users/update.yaml"
 components:
   schemas:
     User:
