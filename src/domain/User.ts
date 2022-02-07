@@ -1,3 +1,4 @@
+/* prismaの型定義が任意の場合nullがはいるので任意フィールドはundefined | nullにする */
 interface CreateUserPayload {
   id: number;
   email: string;
@@ -26,6 +27,7 @@ class User {
     return this._description;
   }
   public get avatarUri(): string | undefined {
+    /* レスポンスはundefinedで返す */
     if (!this._avatarUri) {
       return undefined;
     }
