@@ -5,10 +5,10 @@ properties:
     example: 1
   email:
     type: string
-    example: "example@gmail.com"
+    example: "example@example.com"
   name:
     type: string
-      example: "テスト太郎"
+    example: "太郎"
   description:
     type: string
-      example: "説明が入ります"
+    example: "テスト説明"

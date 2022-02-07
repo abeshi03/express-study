@@ -8,3 +8,11 @@ info:
     url: https://www.apache.org/licenses/LICENSE-2.0.html
 servers:
   - url: http://localhost:5000/ # サンプルURL
+paths:
+  /users/{id}:
+    get:
+      $ref: "./paths/users/find.yaml"
+components:
+  schemas:
+    User:
+      $ref: "./schemas/User.yaml"
