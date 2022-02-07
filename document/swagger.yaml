@@ -15,6 +15,8 @@ paths:
   /users/{id}:
     get:
       $ref: "./paths/users/find.yaml"
+    post:
+      $ref: "./paths/users/create.yaml"
 components:
   schemas:
     User:
