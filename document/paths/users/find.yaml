@@ -1,0 +1,25 @@
+tags:
+  - Users
+summary: ユーザー取得
+description: ユーザー詳細情報の取得
+parameters:
+  - name: id
+    in: path
+    description: ユーザーID
+    required: true
+    schema:
+      type: number
+      example: 1
+responses:
+  200:
+    description: 成功
+    content:
+      application/json:
+        schema:
+          $ref: "../../schemas/User.yaml"
+  404:
+    description: 存在しないID
+  422:
+    description: 不正なID
+  500:
+    description: サーバーエラー

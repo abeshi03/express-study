@@ -1,0 +1,207 @@
+openapi: 3.0.1
+info:
+  title: 学習用サンプル
+  description: swagger学習用のサンプルです
+  version: 1.0.0
+  license:
+    name: Apache 2.0
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+servers:
+  - url: 'http://localhost:5000/'
+paths:
+  /users:
+    get:
+      tags:
+        - Users
+      summary: ユーザー一覧取得
+      description: ユーザーの一覧取得、ページネーション
+      parameters:
+        - name: paginationPageNumber
+          in: query
+          description: ページネーションのページ番号
+          required: true
+          schema:
+            type: number
+          example: 1
+        - name: itemsCountPerPaginationPage
+          in: query
+          description: ページネーション毎のアイテム数
+          required: true
+          schema:
+            type: number
+          example: 10
+        - name: searchByUserName
+          in: query
+          description: 名前の検索キーワード
+          schema:
+            type: string
+          example: USER1
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalItemsCount:
+                    type: number
+                    description: 全データ数
+                    example: 100
+                  itemsCountInSelection:
+                    type: number
+                    description: 任意フィルタリング後のデータ数
+                    example: 1
+                  users:
+                    type: array
+                    description: ユーザーの配列
+                    items:
+                      $ref: '#/components/schemas/User'
+        '422':
+          description: 不正なqueryパラメータ
+        '500':
+          description: サーバーエラー
+  '/users/{id}':
+    get:
+      tags:
+        - Users
+      summary: ユーザー取得
+      description: ユーザー詳細情報の取得
+      parameters:
+        - name: id
+          in: path
+          description: ユーザーID
+          required: true
+          schema:
+            type: number
+            example: 1
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: 存在しないID
+        '422':
+          description: 不正なID
+        '500':
+          description: サーバーエラー
+    post:
+      tags:
+        - Users
+      summary: ユーザーの作成
+      description: ユーザーの作成
+      requestBody:
+        description: ユーザーの内容
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: number
+                    example: 200
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: 1
+                  respondedAt:
+                    type: string
+                    example: '2022-01-01T00:00:00+09:00'
+        '422':
+          description: 不正なbodyパラメータ
+        '500':
+          description: サーバーエラー
+    patch:
+      tags:
+        - Users
+      summary: ユーザーの更新
+      description: ユーザーの更新
+      parameters:
+        - name: id
+          in: path
+          description: ID
+          required: true
+          schema:
+            type: number
+          example: 1
+      requestBody:
+        description: ユーザーの内容
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: number
+                    example: 200
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: string
+                    nullable: true
+                    example: null
+                  respondedAt:
+                    type: string
+                    example: '2022-01-01T00:00:00+09:00'
+        '422':
+          description: 不正なbodyパラメータ
+        '500':
+          description: サーバーエラー
+    delete:
+      tags:
+        - Users
+      summary: ユーザーの削除
+      description: ユーザーの削除
+      requestBody:
+        description: ユーザーの内容
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          $ref: '#/paths/~1users~1%7Bid%7D/patch/responses/200'
+        '422':
+          description: 不正なbodyパラメータ
+        '500':
+          description: サーバーエラー
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+        email:
+          type: string
+          example: example@example.com
+        name:
+          type: string
+          example: 太郎
+        description:
+          type: string
+          example: テスト説明

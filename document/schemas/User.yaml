@@ -1,0 +1,14 @@
+type: object
+properties:
+  id:
+    type: number
+    example: 1
+  email:
+    type: string
+    example: "example@example.com"
+  name:
+    type: string
+    example: "太郎"
+  description:
+    type: string
+    example: "テスト説明"

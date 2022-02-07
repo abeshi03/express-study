@@ -1,0 +1,25 @@
+tags:
+  - Users
+summary: ユーザーの更新
+description: ユーザーの更新
+parameters:
+  - name: id
+    in: path
+    description: ID
+    required: true
+    schema:
+      type: number
+    example: 1
+requestBody:
+  description: ユーザーの内容
+  content:
+    application/json:
+      schema:
+        $ref: "../../schemas/User.yaml"
+responses:
+  200:
+    $ref: "../../components/responses/SuccessfulWithNullResponse.yaml"
+  422:
+    description: 不正なbodyパラメータ
+  500:
+    description: サーバーエラー
