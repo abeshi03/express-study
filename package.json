@@ -6,17 +6,17 @@
   "scripts": {
     "start": "ts-node src/server.ts",
     "start:nodemon": "nodemon src/server.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "prisma": {
     "seed": "npx ts-node prisma/seeds/seed.ts"
   },
   "jest": {
     "transform": {
-      ".(ts|tsx)": "ts-jest"
+      ".ts": "ts-jest"
     },
     "testMatch": [
-      "**/tests/**/*.test.(ts|tsx)"
+      "**/tests/**/*.test.ts"
     ]
   },
   "author": "",
