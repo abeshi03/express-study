@@ -43,8 +43,6 @@ describe("GET /users", () => {
     expect(res.body.message).toEqual("Success");
     expect(typeof res.body.data.totalItemsCount).toBe("number")
     expect(typeof res.body.data.itemsCountInSelection).toBe("number")
-    // TODO
-    expect(typeof res.body.data.users).toBe("object")
 
     const users: UserResponse[] = res.body.data.users;
 
