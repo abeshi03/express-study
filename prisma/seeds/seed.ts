@@ -148,6 +148,71 @@ const usersData: Prisma.UserCreateInput[] = [
 ];
 
 
+const postsData: Prisma.PostCreateInput[] = [
+  {
+    content: "ユーザー1のテスト投稿です！",
+    imageUri: "http://placekitten.com/200/300",
+    user: { connect: { id: 1 } },
+    createdAt: moment().format()
+  },
+  {
+    content: "ユーザー1のテスト投稿です！",
+    user: { connect: { id: 1 } },
+    createdAt: moment().format()
+  },
+  {
+    content: "ユーザー1のテスト投稿です！",
+    user: { connect: { id: 1 } },
+    createdAt: moment().format()
+  },
+  {
+    content: "ユーザー2のテスト投稿です！",
+    user: { connect: { id: 2 } },
+    createdAt: moment().format()
+  },
+  {
+    content: "ユーザー2のテスト投稿です！",
+    user: { connect: { id: 2 } },
+    createdAt: moment().format()
+  },
+  {
+    content: "ユーザー2のテスト投稿です！",
+    user: { connect: { id: 2 } },
+    createdAt: moment().format()
+  },
+  {
+    content: "ユーザー3のテスト投稿です！",
+    user: { connect: { id: 3 } },
+    createdAt: moment().format()
+  },
+  {
+    content: "ユーザー3のテスト投稿です！",
+    user: { connect: { id: 3 } },
+    createdAt: moment().format()
+  },
+  {
+    content: "ユーザー3のテスト投稿です！",
+    user: { connect: { id: 3 } },
+    createdAt: moment().format()
+  },
+  {
+    content: "ユーザー3のテスト投稿です！",
+    user: { connect: { id: 3 } },
+    createdAt: moment().format()
+  },
+  {
+    content: "ユーザー3のテスト投稿です！",
+    user: { connect: { id: 3 } },
+    createdAt: moment().format()
+  },
+  {
+    content: "ユーザー3のテスト投稿です！",
+    user: { connect: { id: 3 } },
+    createdAt: moment().format()
+  }
+];
+
+
 async function createSeedData() {
 
   try {
@@ -155,6 +220,11 @@ async function createSeedData() {
     for (const user of usersData) {
       await prisma.user.create({ data: user });
     }
+
+    for (const post of postsData) {
+      await prisma.post.create({ data: post });
+    }
+
   } catch (error: unknown) {
 
     console.error(error);
