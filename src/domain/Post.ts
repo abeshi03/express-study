@@ -1,7 +1,7 @@
 interface CreatePostPayload {
   id: number;
   content: string;
-  imageUri?: string;
+  imageUri?: string | null;
 }
 
 
