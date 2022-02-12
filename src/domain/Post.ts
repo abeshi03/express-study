@@ -6,6 +6,7 @@ interface CreatePostPayload {
   userId: number;
   content: string;
   imageUri?: string | null;
+  createdAt: Date;
   user: CreateUserPayload;
 }
 
@@ -15,6 +16,7 @@ class Post {
   private readonly _userId: number;
   private readonly _content: string;
   private readonly _imageUri?: string | null;
+  private readonly _createdAt: Date;
   private readonly _user: User;
 
   public get id(): number {
@@ -34,6 +36,10 @@ class Post {
     return this._imageUri;
   }
 
+  public get createdAt(): Date {
+    return this._createdAt;
+  }
+
   public get user(): User {
     return this._user;
   }
@@ -44,6 +50,7 @@ class Post {
     this._userId = payload.userId;
     this._content = payload.content;
     this._imageUri = payload.imageUri;
+    this._createdAt = payload.createdAt
     this._user = new User(payload.user);
   }
 }
