@@ -1,6 +1,11 @@
+/* --- フレームワーク、ライブラリー --------------------------------------------------------------------------------------- */
 import express, { Application } from "express";
 import { PrismaClient } from '@prisma/client'
+
+/* --- ルーティング ---------------------------------------------------------------------------------------------------- */
 import { userRoutes } from "./interfaces/routes/userRouter";
+import { postRoutes } from "./interfaces/routes/postRouter";
+
 
 const app: Application = express();
 
@@ -14,6 +19,7 @@ app.get("/", (req: express.Request, res: express.Response) => {
 });
 
 app.use("/users", userRoutes(prisma));
+app.use("/posts", postRoutes(prisma));
 
 app.get("*", (req, res) => {
   return res.status(400).send({ error: "Invalid Url" });
