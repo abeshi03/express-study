@@ -35,3 +35,5 @@ class PostRepositoryImpl implements PostRepository {
     return new Post(post);
   }
 }
+
+export { PostRepositoryImpl };
