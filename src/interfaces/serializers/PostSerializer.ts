@@ -1,5 +1,11 @@
-import {Post} from "../../domain/Post";
+/* --- 実態 ---------------------------------------------------------------------------------------------------------- */
+import { Post } from "../../domain/Post";
+
+/* --- レスポンス ------------------------------------------------------------------------------------------------------ */
 import { UserResponse } from "./UserSerializer";
+
+/* --- db関連 --------------------------------------------------------------------------------------------------------- */
+import { PostRepository } from "../database/repository/PostRepository";
 
 export interface IdResponse {
   id: number;
@@ -11,6 +17,11 @@ export interface PostResponse {
   imageUri?: string;
   postedUserData: UserResponse;
   postedDateTime: string;
+}
+
+export interface PostsResponse {
+  posts: PostResponse[];
+  nextId: number;
 }
 
 
@@ -31,6 +42,15 @@ export class PostSerializer {
       },
       postedDateTime: post.createdAt.toISOString()
     };
+  }
+
+  /* --- post一覧レスポンス -------------------------------------------------------------------------------------------- */
+  public posts(items: PostRepository.FindList.ResponseData): PostsResponse {
+    const postResponse = items.posts.map((post) => this.post(post));
+    return {
+      nextId: items.nextId,
+      posts: postResponse
+    }
   }
 
   /* --- postIdレスポンス --------------------------------------------------------------------------------------------- */
