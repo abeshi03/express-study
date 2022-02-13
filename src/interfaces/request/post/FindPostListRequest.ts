@@ -3,7 +3,7 @@ import { Request } from "express";
 
 export interface FindPostListParams {
   limit?: number;
-  cursor?: number;
+  cursor?: string;
   searchByPostContent?: string;
 }
 

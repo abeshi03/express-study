@@ -19,7 +19,7 @@ namespace PostRepository {
   export namespace FindList {
 
     export type ResponseData = {
-      nextId: number;
+      nextId?: number;
       posts: Post[];
     }
   }
