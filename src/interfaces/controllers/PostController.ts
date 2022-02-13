@@ -11,7 +11,10 @@ import { PostRepositoryImpl } from "../database/PostgreSQL/PostRepositoryImpl";
 
 /* --- レスポンス ------------------------------------------------------------------------------------------------------ */
 import { ApiResponse } from "../serializers/ApplicationSerializer";
-import { PostResponse, PostSerializer } from "../serializers/PostSerializer";
+import { PostResponse, PostSerializer, PostsResponse } from "../serializers/PostSerializer";
+
+/* --- リクエスト ------------------------------------------------------------------------------------------------------ */
+import { FindPostListRequest } from "../request/post/FindPostListRequest";
 
 
 class PostController {
@@ -23,6 +26,30 @@ class PostController {
 
     this.useCase = new PostUseCase(repository);
     this.serializer = new PostSerializer();
+  }
+
+
+  /* --- 投稿一覧取得 -------------------------------------------------------------------------------------------------- */
+  public async findList(request: FindPostListRequest): Promise<ApiResponse<PostsResponse>> {
+
+    const errors = validationResult(request);
+
+    if (!errors.isEmpty()) {
+      return ApiResponse.error(422, errors.array()[0].msg);
+    }
+
+    try {
+
+      const posts = await this.useCase.findList(request.query);
+      const response = this.serializer.posts(posts);
+
+      return ApiResponse.success(response);
+
+    } catch (error: any) {
+
+      console.log(error);
+      return ApiResponse.error(500, error.message);
+    }
   }
 
 

@@ -21,7 +21,7 @@ export interface PostResponse {
 
 export interface PostsResponse {
   posts: PostResponse[];
-  nextId: number;
+  nextId?: number;
 }
 
 
