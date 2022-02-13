@@ -2,7 +2,7 @@
 import { PrismaClient } from "@prisma/client";
 
 /* --- 実態 ----------------------------------------------------------------------------------------------------------- */
-import {CreatePostPayload, Post} from "../../../domain/Post";
+import { CreatePostPayload, Post } from "../../../domain/Post";
 
 /* --- db関連 --------------------------------------------------------------------------------------------------------- */
 import { PostRepository } from "../repository/PostRepository";
@@ -21,7 +21,7 @@ class PostRepositoryImpl implements PostRepository {
 
   public async findList(query: FindPostListParams): Promise<PostRepository.FindList.ResponseData> {
     const cursor = query.cursor ?? "";
-    const cursorObj = cursor === "" ? undefined: { id: parseInt(cursor as string) }
+    const cursorObj = !cursor ? undefined: { id: Number(cursor) }
     const posts = await this.prisma.post.findMany({
       where: {
         content: {
@@ -34,7 +34,7 @@ class PostRepositoryImpl implements PostRepository {
       orderBy: {
         createdAt: "asc"
       },
-      take: query.limit,
+      take: Number(query.limit),
       cursor: cursorObj,
       skip: cursor === "" ? 0 : 1,
     });
