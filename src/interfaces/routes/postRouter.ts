@@ -5,11 +5,36 @@ import { PrismaClient } from "@prisma/client";
 
 /* --- コントローラー -------------------------------------------------------------------------------------------------- */
 import { PostController } from "../controllers/PostController";
+import {FindPostListRequest} from "../request/post/FindPostListRequest";
 
 const router = express.Router();
 
 const postRoutes = (prisma: PrismaClient): express.Router => {
   const postController = new PostController(prisma);
+
+
+  /* --- 投稿一覧取得 -------------------------------------------------------------------------------------------------- */
+  router.get(
+    "/",
+    [
+      query("limit")
+        .exists()
+        .withMessage("limit is missing")
+        .isInt()
+        .withMessage("Invalid limit"),
+      query("cursor")
+        .exists()
+        .withMessage("cursor is missing")
+        .isString()
+        .withMessage("Invalid cursor"),
+      query("searchByPostContent")
+        .optional().isString().withMessage("Invalid searchByPostContent")
+    ],
+    async (req: FindPostListRequest, res: express.Response): Promise<void> => {
+      const results = await postController.findList(req);
+      res.status(results.code).send(results)
+    }
+  )
 
   /* --- idでの投稿取得 ------------------------------------------------------------------------------------------------ */
   router.get(
