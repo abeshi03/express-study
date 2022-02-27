@@ -1,7 +1,3 @@
--- AlterTable
-ALTER TABLE "User" ADD COLUMN     "avatarUri" VARCHAR(200),
-ADD COLUMN     "updated_at" TIMESTAMP(3);
-
 -- CreateTable
 CREATE TABLE "Post" (
     "id" SERIAL NOT NULL,

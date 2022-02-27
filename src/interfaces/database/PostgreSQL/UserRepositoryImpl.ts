@@ -40,9 +40,8 @@ class UserRepositoryImpl implements UserRepository {
       orderBy: {
         id: "asc"
       },
-      take: Number(query.itemsCountPerPaginationPage),
-      skip:
-        (Number(query.paginationPageNumber) -1) * Number(query.itemsCountPerPaginationPage)
+      skip: (Number(query.paginationPageNumber) - 1) * Number(query.itemsCountPerPaginationPage),
+      take: Number(query.itemsCountPerPaginationPage)
     });
 
     users.map((user: CreateUserPayload) => new User(user));

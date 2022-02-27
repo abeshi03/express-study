@@ -19,7 +19,6 @@ namespace PostRepository {
   export namespace FindList {
 
     export type ResponseData = {
-      nextId?: number;
       posts: Post[];
     }
   }

@@ -144,7 +144,81 @@ const usersData: Prisma.UserCreateInput[] = [
     name: "ユーザー20",
     description: "宜しくお願いします",
     createdAt: moment().format()
-  }
+  },
+  {
+    email: "example21@test.com",
+    name: "ユーザー21",
+    description: "宜しくお願いします",
+    createdAt: moment().format()
+  },
+  {
+    email: "example22@test.com",
+    name: "ユーザー22",
+    description: "宜しくお願いします",
+    avatarUri: "http://placekitten.com/200/300",
+    createdAt: moment().format()
+  },
+  {
+    email: "example500@test.com",
+    name: "ユーザー500",
+    description: "宜しくお願いします",
+    avatarUri: "http://placekitten.com/200/300",
+    createdAt: moment().format()
+  },
+  {
+    email: "example23@test.com",
+    name: "ユーザー23",
+    description: "宜しくお願いします",
+    createdAt: moment().format()
+  },
+  {
+    email: "example24@test.com",
+    name: "ユーザー24",
+    description: "宜しくお願いします",
+    createdAt: moment().format()
+  },
+  {
+    email: "example25@test.com",
+    name: "ユーザー25",
+    description: "宜しくお願いします",
+    createdAt: moment().format()
+  },
+  {
+    email: "example26@test.com",
+    name: "ユーザー26",
+    description: "宜しくお願いします",
+    createdAt: moment().format()
+  },
+  {
+    email: "example27@test.com",
+    name: "ユーザー27",
+    description: "宜しくお願いします",
+    createdAt: moment().format()
+  },
+  {
+    email: "example28@test.com",
+    name: "ユーザー28",
+    description: "宜しくお願いします",
+    createdAt: moment().format()
+  },
+  {
+    email: "example29@test.com",
+    name: "ユーザー29",
+    description: "宜しくお願いします",
+    createdAt: moment().format()
+  },
+  {
+    email: "example30@test.com",
+    name: "ユーザー30",
+    description: "宜しくお願いします",
+    createdAt: moment().format()
+  },
+  {
+    email: "example31@test.com",
+    name: "ユーザー31",
+    description: "宜しくお願いします",
+    createdAt: moment().format()
+  },
 ];
 
 

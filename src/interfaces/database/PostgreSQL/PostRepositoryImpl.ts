@@ -20,8 +20,6 @@ class PostRepositoryImpl implements PostRepository {
 
 
   public async findList(query: FindPostListParams): Promise<PostRepository.FindList.ResponseData> {
-    const cursor = query.cursor ?? "";
-    const cursorObj = !cursor ? undefined: { id: Number(cursor) }
     const posts = await this.prisma.post.findMany({
       where: {
         content: {
@@ -34,16 +32,12 @@ class PostRepositoryImpl implements PostRepository {
       orderBy: {
         createdAt: "asc"
       },
-      take: Number(query.limit),
-      cursor: cursorObj,
-      skip: cursor === "" ? 0 : 1,
+      skip: (Number(query.pageNumber) - 1) * Number(query.limit),
+      take: Number(query.limit)
     });
 
-    const nextId = posts.length === query.limit ? posts[query.limit - 1].id + 1 : undefined;
-
     return {
-      posts: posts.map((post: CreatePostPayload) => new Post(post)),
-      nextId
+      posts: posts.map((post: CreatePostPayload) => new Post(post))
     }
 
   }

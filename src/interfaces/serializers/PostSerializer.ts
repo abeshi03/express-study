@@ -21,7 +21,6 @@ export interface PostResponse {
 
 export interface PostsResponse {
   posts: PostResponse[];
-  nextId?: number;
 }
 
 
@@ -48,7 +47,6 @@ export class PostSerializer {
   public posts(items: PostRepository.FindList.ResponseData): PostsResponse {
     const postResponse = items.posts.map((post) => this.post(post));
     return {
-      nextId: items.nextId,
       posts: postResponse
     }
   }

@@ -22,11 +22,11 @@ const postRoutes = (prisma: PrismaClient): express.Router => {
         .withMessage("limit is missing")
         .isInt()
         .withMessage("Invalid limit"),
-      query("cursor")
+      query("pageNumber")
         .exists()
-        .withMessage("cursor is missing")
-        .isString()
-        .withMessage("Invalid cursor"),
+        .withMessage("pageNumber is missing")
+        .isInt()
+        .withMessage("Invalid pageNumber"),
       query("searchByPostContent")
         .optional().isString().withMessage("Invalid searchByPostContent")
     ],
