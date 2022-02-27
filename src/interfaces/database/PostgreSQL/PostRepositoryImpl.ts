@@ -30,7 +30,7 @@ class PostRepositoryImpl implements PostRepository {
         user: true
       },
       orderBy: {
-        createdAt: "asc"
+        id: "asc"
       },
       skip: (Number(query.pageNumber) - 1) * Number(query.limit),
       take: Number(query.limit)
