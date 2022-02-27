@@ -4,6 +4,9 @@ import moment from "moment";
 
 const prisma = new PrismaClient();
 
+const text = "テキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入ります" +
+  "テキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入ります";
+
 
 const usersData: Prisma.UserCreateInput[] = [
   {
@@ -224,63 +227,98 @@ const usersData: Prisma.UserCreateInput[] = [
 
 const postsData: Prisma.PostCreateInput[] = [
   {
-    content: "ユーザー1のテスト投稿です！",
+    content: `ユーザー1のテスト投稿です！${text}`,
     imageUri: "http://placekitten.com/200/300",
     user: { connect: { id: 1 } },
     createdAt: moment().format()
   },
   {
-    content: "ユーザー1のテスト投稿です！",
+    content: `ユーザー1のテスト投稿です！${text}`,
     user: { connect: { id: 1 } },
     createdAt: moment().format()
   },
   {
-    content: "ユーザー1のテスト投稿です！",
+    content: `ユーザー1のテスト投稿です！${text}`,
     user: { connect: { id: 1 } },
     createdAt: moment().format()
   },
   {
-    content: "ユーザー2のテスト投稿です！",
+    content: `ユーザー2のテスト投稿です！${text}`,
     user: { connect: { id: 2 } },
     createdAt: moment().format()
   },
   {
-    content: "ユーザー2のテスト投稿です！",
+    content: `ユーザー2のテスト投稿です！${text}`,
     user: { connect: { id: 2 } },
     createdAt: moment().format()
   },
   {
-    content: "ユーザー2のテスト投稿です！",
+    content: `ユーザー2のテスト投稿です！${text}`,
     user: { connect: { id: 2 } },
     createdAt: moment().format()
   },
   {
-    content: "ユーザー3のテスト投稿です！",
+    content: `ユーザー2のテスト投稿です！${text}`,
     user: { connect: { id: 3 } },
     createdAt: moment().format()
   },
   {
-    content: "ユーザー3のテスト投稿です！",
+    content: `ユーザー3のテスト投稿です！${text}`,
     user: { connect: { id: 3 } },
     createdAt: moment().format()
   },
   {
-    content: "ユーザー3のテスト投稿です！",
+    content: `ユーザー3のテスト投稿です！${text}`,
     user: { connect: { id: 3 } },
     createdAt: moment().format()
   },
   {
-    content: "ユーザー3のテスト投稿です！",
+    content: `ユーザー3のテスト投稿です！${text}`,
     user: { connect: { id: 3 } },
     createdAt: moment().format()
   },
   {
-    content: "ユーザー3のテスト投稿です！",
+    content: `ユーザー3のテスト投稿です！${text}`,
     user: { connect: { id: 3 } },
     createdAt: moment().format()
   },
   {
-    content: "ユーザー3のテスト投稿です！",
+    content: `ユーザー3のテスト投稿です！${text}`,
+    user: { connect: { id: 3 } },
+    createdAt: moment().format()
+  },
+  {
+    content: `ユーザー3のテスト投稿です！${text}`,
+    user: { connect: { id: 3 } },
+    createdAt: moment().format()
+  },
+  {
+    content: `ユーザー3のテスト投稿です！${text}`,
+    user: { connect: { id: 3 } },
+    createdAt: moment().format()
+  },
+  {
+    content: `ユーザー3のテスト投稿です！${text}`,
+    user: { connect: { id: 3 } },
+    createdAt: moment().format()
+  },
+  {
+    content: `ユーザー3のテスト投稿です！${text}`,
+    user: { connect: { id: 3 } },
+    createdAt: moment().format()
+  },
+  {
+    content: `ユーザー3のテスト投稿です！${text}`,
+    user: { connect: { id: 3 } },
+    createdAt: moment().format()
+  },
+  {
+    content: `ユーザー3のテスト投稿です！${text}`,
+    user: { connect: { id: 3 } },
+    createdAt: moment().format()
+  },
+  {
+    content: `ユーザー3のテスト投稿です！${text}`,
     user: { connect: { id: 3 } },
     createdAt: moment().format()
   }

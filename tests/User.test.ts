@@ -48,7 +48,7 @@ describe("GET /users", () => {
 
     expect(users.length).toBe(itemsCountPerPaginationPage);
 
-    users.map((user) => {
+    users.forEach((user) => {
       userTest(user);
     });
   });
