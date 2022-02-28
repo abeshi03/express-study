@@ -1,11 +1,14 @@
 /* --- フレームワーク、ライブラリー --------------------------------------------------------------------------------------- */
 import express from "express";
-import { body, param, query } from "express-validator";
+import { param, query } from "express-validator";
 import { PrismaClient } from "@prisma/client";
 
 /* --- コントローラー -------------------------------------------------------------------------------------------------- */
 import { PostController } from "../controllers/PostController";
-import {FindPostListRequest} from "../request/post/FindPostListRequest";
+
+/* --- リクエスト ----------------------------------------------------------------------------------------------------- */
+import { FindPostListRequest } from "../request/post/FindPostListRequest";
+
 
 const router = express.Router();
 

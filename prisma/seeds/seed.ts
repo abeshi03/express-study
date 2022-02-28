@@ -227,7 +227,7 @@ const usersData: Prisma.UserCreateInput[] = [
 
 const postsData: Prisma.PostCreateInput[] = [
   {
-    content: `ユーザー1のテスト投稿です！${text}`,
+    content: `ユーザー1のテスト投稿です！検索test用${text}`,
     imageUri: "http://placekitten.com/200/300",
     user: { connect: { id: 1 } },
     createdAt: moment().format()
