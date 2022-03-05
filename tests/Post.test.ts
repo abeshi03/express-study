@@ -5,7 +5,6 @@ import app from "../src";
 /* --- 型定義 --------------------------------------------------------------------------------------------------------- */
 import { userTest } from "./User.test";
 import { PostResponse } from "../src/interfaces/serializers/PostSerializer";
-import exp from "constants";
 
 
 const baseUrl = "/posts"
