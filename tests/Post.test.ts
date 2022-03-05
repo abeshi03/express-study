@@ -84,13 +84,13 @@ describe("GET /posts", () => {
 
   it ("Should search by post Content", async () => {
 
-    const res = await request(app).get(`${baseUrl}?limit=${limit}&pageNumber=1&searchByPostContent=test`);
+    const res = await request(app).get(`${baseUrl}?limit=${limit}&pageNumber=1&searchByPostContent=${encodeURI("テスト")}`);
 
     expect(res.status).toEqual(200);
     expect(res.body.message).toEqual("Success");
 
     const posts: PostResponse[] = res.body.data.posts;
-    expect(posts[0].content).toMatch(/test/);
+    expect(posts[0].content).toMatch(/テスト/);
 
   });
 });
