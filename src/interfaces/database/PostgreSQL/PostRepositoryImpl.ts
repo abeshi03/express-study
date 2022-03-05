@@ -19,7 +19,7 @@ class PostRepositoryImpl implements PostRepository {
   }
 
 
-  public async findList(query: FindPostListParams): Promise<PostRepository.FindList.ResponseData> {
+  public async findList(query: FindPostListParams = { limit: 5, pageNumber: 1 }): Promise<PostRepository.FindList.ResponseData> {
     const posts = await this.prisma.post.findMany({
       where: {
         content: {
