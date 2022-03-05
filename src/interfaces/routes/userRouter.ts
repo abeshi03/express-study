@@ -34,8 +34,6 @@ const createValidationChain = [
     .withMessage("avatarUri is missing")
     .isString()
     .withMessage("Invalid avatarUri")
-    .isLength({ min: 0, max: 200 })
-    .withMessage("avatarUri must be 0 - 200 character long")
     .optional({ nullable: true })
 ];
 

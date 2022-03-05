@@ -4,6 +4,9 @@ import moment from "moment";
 
 const prisma = new PrismaClient();
 
+const text = "テキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入ります" +
+  "テキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入ります";
+
 
 const usersData: Prisma.UserCreateInput[] = [
   {
@@ -144,6 +147,180 @@ const usersData: Prisma.UserCreateInput[] = [
     name: "ユーザー20",
     description: "宜しくお願いします",
     createdAt: moment().format()
+  },
+  {
+    email: "example21@test.com",
+    name: "ユーザー21",
+    description: "宜しくお願いします",
+    createdAt: moment().format()
+  },
+  {
+    email: "example22@test.com",
+    name: "ユーザー22",
+    description: "宜しくお願いします",
+    avatarUri: "http://placekitten.com/200/300",
+    createdAt: moment().format()
+  },
+  {
+    email: "example500@test.com",
+    name: "ユーザー500",
+    description: "宜しくお願いします",
+    avatarUri: "http://placekitten.com/200/300",
+    createdAt: moment().format()
+  },
+  {
+    email: "example23@test.com",
+    name: "ユーザー23",
+    description: "宜しくお願いします",
+    createdAt: moment().format()
+  },
+  {
+    email: "example24@test.com",
+    name: "ユーザー24",
+    description: "宜しくお願いします",
+    createdAt: moment().format()
+  },
+  {
+    email: "example25@test.com",
+    name: "ユーザー25",
+    description: "宜しくお願いします",
+    createdAt: moment().format()
+  },
+  {
+    email: "example26@test.com",
+    name: "ユーザー26",
+    description: "宜しくお願いします",
+    createdAt: moment().format()
+  },
+  {
+    email: "example27@test.com",
+    name: "ユーザー27",
+    description: "宜しくお願いします",
+    createdAt: moment().format()
+  },
+  {
+    email: "example28@test.com",
+    name: "ユーザー28",
+    description: "宜しくお願いします",
+    createdAt: moment().format()
+  },
+  {
+    email: "example29@test.com",
+    name: "ユーザー29",
+    description: "宜しくお願いします",
+    createdAt: moment().format()
+  },
+  {
+    email: "example30@test.com",
+    name: "ユーザー30",
+    description: "宜しくお願いします",
+    createdAt: moment().format()
+  },
+  {
+    email: "example31@test.com",
+    name: "ユーザー31",
+    description: "宜しくお願いします",
+    createdAt: moment().format()
+  },
+];
+
+
+const postsData: Prisma.PostCreateInput[] = [
+  {
+    content: `ユーザー1のテスト投稿です！検索test用${text}`,
+    imageUri: "http://placekitten.com/200/300",
+    user: { connect: { id: 1 } },
+    createdAt: moment().format()
+  },
+  {
+    content: `ユーザー1のテスト投稿です！${text}`,
+    user: { connect: { id: 1 } },
+    createdAt: moment().format()
+  },
+  {
+    content: `ユーザー1のテスト投稿です！${text}`,
+    user: { connect: { id: 1 } },
+    createdAt: moment().format()
+  },
+  {
+    content: `ユーザー2のテスト投稿です！${text}`,
+    user: { connect: { id: 2 } },
+    createdAt: moment().format()
+  },
+  {
+    content: `ユーザー2のテスト投稿です！${text}`,
+    user: { connect: { id: 2 } },
+    createdAt: moment().format()
+  },
+  {
+    content: `ユーザー2のテスト投稿です！${text}`,
+    user: { connect: { id: 2 } },
+    createdAt: moment().format()
+  },
+  {
+    content: `ユーザー2のテスト投稿です！${text}`,
+    user: { connect: { id: 3 } },
+    createdAt: moment().format()
+  },
+  {
+    content: `ユーザー3のテスト投稿です！${text}`,
+    user: { connect: { id: 3 } },
+    createdAt: moment().format()
+  },
+  {
+    content: `ユーザー3のテスト投稿です！${text}`,
+    user: { connect: { id: 3 } },
+    createdAt: moment().format()
+  },
+  {
+    content: `ユーザー3のテスト投稿です！${text}`,
+    user: { connect: { id: 3 } },
+    createdAt: moment().format()
+  },
+  {
+    content: `ユーザー3のテスト投稿です！${text}`,
+    user: { connect: { id: 3 } },
+    createdAt: moment().format()
+  },
+  {
+    content: `ユーザー3のテスト投稿です！${text}`,
+    user: { connect: { id: 3 } },
+    createdAt: moment().format()
+  },
+  {
+    content: `ユーザー3のテスト投稿です！${text}`,
+    user: { connect: { id: 3 } },
+    createdAt: moment().format()
+  },
+  {
+    content: `ユーザー3のテスト投稿です！${text}`,
+    user: { connect: { id: 3 } },
+    createdAt: moment().format()
+  },
+  {
+    content: `ユーザー3のテスト投稿です！${text}`,
+    user: { connect: { id: 3 } },
+    createdAt: moment().format()
+  },
+  {
+    content: `ユーザー3のテスト投稿です！${text}`,
+    user: { connect: { id: 3 } },
+    createdAt: moment().format()
+  },
+  {
+    content: `ユーザー3のテスト投稿です！${text}`,
+    user: { connect: { id: 3 } },
+    createdAt: moment().format()
+  },
+  {
+    content: `ユーザー3のテスト投稿です！${text}`,
+    user: { connect: { id: 3 } },
+    createdAt: moment().format()
+  },
+  {
+    content: `ユーザー3のテスト投稿です！${text}`,
+    user: { connect: { id: 3 } },
+    createdAt: moment().format()
   }
 ];
 
@@ -155,6 +332,11 @@ async function createSeedData() {
     for (const user of usersData) {
       await prisma.user.create({ data: user });
     }
+
+    for (const post of postsData) {
+      await prisma.post.create({ data: post });
+    }
+
   } catch (error: unknown) {
 
     console.error(error);
