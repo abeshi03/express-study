@@ -12,3 +12,4 @@ interface AuthRepository {
   signUp: (query: SignUpParams) => Promise<User>;
 }
 
+export { AuthRepository };
