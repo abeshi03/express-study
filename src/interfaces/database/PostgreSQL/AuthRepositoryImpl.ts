@@ -3,7 +3,7 @@ import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
 
 /* --- 実態 ----------------------------------------------------------------------------------------------------------- */
-import { User, CreateUserPayload } from "../../../domain/User";
+import { User } from "../../../domain/User";
 
 /* --- db関連 --------------------------------------------------------------------------------------------------------- */
 import { AuthRepository } from "../repository/AuthRepository";
@@ -21,17 +21,20 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
 
+  public async checkForUniqueEmail(email: string): Promise<boolean> {
+    const users = await this.prisma.user.findMany();
+
+    const userEmails: string[] = users.map((user) => {
+      return user.email;
+    })
+
+    return userEmails.includes(email);
+  }
+
+
+
   public async signUp(query: SignUpParams): Promise<User> {
 
-    // const userEmails: { email: string }[] = await this.prisma.user.findMany({
-    //   select: {
-    //     email: true
-    //   }
-    // });
-    //
-    // if(userEmails.includes({ email: query.email })) {
-    //
-    // }
     const hashedPassword = await bcrypt.hash(query.password, 10);
 
     const userId = (await this.prisma.user.create({
@@ -62,3 +65,6 @@ class AuthRepositoryImpl implements AuthRepository {
 
   }
 }
+
+
+export { AuthRepositoryImpl };

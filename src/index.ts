@@ -6,6 +6,7 @@ import cors from "cors";
 /* --- ルーティング ---------------------------------------------------------------------------------------------------- */
 import { userRoutes } from "./interfaces/routes/userRouter";
 import { postRoutes } from "./interfaces/routes/postRouter";
+import { authRoutes } from "./interfaces/routes/authRouter";
 
 
 const app: Application = express();
@@ -26,6 +27,7 @@ app.get("/", (req: express.Request, res: express.Response) => {
 
 app.use("/users", userRoutes(prisma));
 app.use("/posts", postRoutes(prisma));
+app.use("/auth", authRoutes(prisma));
 
 app.get("*", (req, res) => {
   return res.status(400).send({ error: "Invalid Url" });

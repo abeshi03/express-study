@@ -7,6 +7,8 @@ import { SignUpParams } from "../../request/auth/SignUpRequest";
 
 interface AuthRepository {
 
+  /* --- メールアドレスの重複チェック ------------------------------------------------------------------------------------- */
+  checkForUniqueEmail: (email: string) => Promise<boolean>;
 
   /* --- 会員登録 ----------------------------------------------------------------------------------------------------- */
   signUp: (query: SignUpParams) => Promise<User>;
