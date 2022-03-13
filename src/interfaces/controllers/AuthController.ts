@@ -59,7 +59,7 @@ class AuthController {
       return ApiResponse.error(422, errors.array()[0].msg);
     }
 
-    const isEmailUnique: boolean | undefined = (await this.checkForUniqueEmail(request.body.email)).data;
+    const isEmailUnique: boolean = await this.useCase.checkForUniqueEmail(request.body.email);
 
     if (isEmailUnique) {
       return ApiResponse.error(400, "Not unique email");

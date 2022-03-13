@@ -5,8 +5,9 @@ import { PrismaClient } from "@prisma/client";
 
 /* --- コントローラー -------------------------------------------------------------------------------------------------- */
 import { AuthController } from "../controllers/AuthController";
-import {SignUpRequest} from "../request/auth/SignUpRequest";
 
+/* --- リクエスト ----------------------------------------------------------------------------------------------------- */
+import { SignUpRequest } from "../request/auth/SignUpRequest";
 
 
 const router = express.Router();
