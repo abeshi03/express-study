@@ -9,7 +9,7 @@ import { AuthController } from "../controllers/AuthController";
 
 /* --- リクエスト ----------------------------------------------------------------------------------------------------- */
 import { SignUpRequest } from "../request/auth/SignUpRequest";
-import {SignInRequest} from "../request/auth/SignInRequest";
+import { SignInRequest } from "../request/auth/SignInRequest";
 
 
 const router = express.Router();
@@ -132,6 +132,7 @@ const authRoutes = (prisma: PrismaClient): express.Router => {
         .withMessage("password must be 0 - 255 character long"),
     ],
     async (req: SignInRequest, res: express.Response): Promise<void> => {
+
       const results = await authController.signIn(req);
 
       if (results.code === 200) {
