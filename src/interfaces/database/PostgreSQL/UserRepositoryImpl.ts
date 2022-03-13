@@ -92,6 +92,7 @@ class UserRepositoryImpl implements UserRepository {
         name: query.name,
         description: query.description,
         email: query.email,
+        password: "password",
         createdAt: new Date()
       }
     });

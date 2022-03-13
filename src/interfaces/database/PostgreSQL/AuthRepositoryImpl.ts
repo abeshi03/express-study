@@ -10,6 +10,7 @@ import { AuthRepository } from "../repository/AuthRepository";
 
 /* --- リクエスト ------------------------------------------------------------------------------------------------------ */
 import { SignUpParams } from "../../request/auth/SignUpRequest";
+import { SignInParams } from "../../request/auth/SignInRequest";
 
 
 class AuthRepositoryImpl implements AuthRepository {
@@ -64,6 +65,41 @@ class AuthRepositoryImpl implements AuthRepository {
     return new User(user);
 
   }
+
+
+  public async signIn(query: SignInParams): Promise<User> {
+
+    const hashedPassword = await bcrypt.hash(query.password, 10);
+
+    const user = await this.prisma.user.findUnique({
+      select: {
+        id: true,
+        name: true,
+        description: true,
+        email: true,
+        avatarUri: true,
+        password: true
+      },
+      where: {
+        email: query.email
+      },
+      rejectOnNotFound: true
+    });
+
+    if (!user) {
+      throw new Error("Invalid email");
+    }
+
+    const comparedPassword: boolean = await bcrypt.compare(query.password, user.password);
+
+    if (!comparedPassword) {
+      throw new Error("Invalid password");
+    }
+
+    return new User(user);
+  }
+
+
 }
 
 
