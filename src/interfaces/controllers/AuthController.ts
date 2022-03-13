@@ -1,7 +1,7 @@
 /* --- フレームワーク、ライブラリー --------------------------------------------------------------------------------------- */
 import { PrismaClient } from "@prisma/client";
 import { validationResult } from "express-validator";
-import { Request } from "express";
+import {Request, response} from "express";
 
 /* --- ユースケース ---------------------------------------------------------------------------------------------------- */
 import { AuthUseCase } from "../../application/usecases/AuthUseCase";
@@ -11,6 +11,7 @@ import { AuthRepositoryImpl } from "../database/PostgreSQL/AuthRepositoryImpl";
 
 /* --- リクエスト ------------------------------------------------------------------------------------------------------ */
 import { SignUpRequest } from "../request/auth/SignUpRequest";
+import { SignInRequest } from "../request/auth/SignInRequest";
 
 /* --- レスポンス ----------------------------------------------------------------------------------------------------- */
 import { ApiResponse } from "../serializers/ApplicationSerializer";
@@ -68,6 +69,30 @@ class AuthController {
     try {
 
       const user = await this.useCase.signUp(request.body);
+      const response = this.userSerializer.user(user);
+
+      return ApiResponse.success(response);
+
+    } catch (error: any) {
+
+      console.log(error);
+      return ApiResponse.error(500, error.message);
+    }
+  }
+
+
+  /* --- ログイン ----------------------------------------------------------------------------------------------------- */
+  public async signIn(request: SignInRequest): Promise<ApiResponse<UserResponse>> {
+
+    const errors = validationResult(request);
+
+    if (!errors.isEmpty()) {
+      return ApiResponse.error(422, errors.array()[0].msg);
+    }
+
+    try {
+
+      const user = await this.useCase.signIn(request.body);
       const response = this.userSerializer.user(user);
 
       return ApiResponse.success(response);
