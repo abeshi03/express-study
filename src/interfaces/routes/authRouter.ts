@@ -106,7 +106,7 @@ const authRoutes = (prisma: PrismaClient): express.Router => {
           respondedAt: moment().format()
         }
 
-        res.status(results.code).send(results)
+        res.status(results.code).send(results);
       }
     }
   )
