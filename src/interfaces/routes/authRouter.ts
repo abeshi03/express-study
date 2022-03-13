@@ -71,12 +71,14 @@ const authRoutes = (prisma: PrismaClient): express.Router => {
     ],
     async (req: SignUpRequest, res: express.Response): Promise<void> => {
       const results = await authController.signUp(req);
+
       if (results.code === 200) {
         res.cookie("session_id", req.sessionID, {
           maxAge: 1209600000,
           httpOnly: true,
         });
       }
+
       res.status(results.code).send(results)
     }
   )
@@ -131,6 +133,14 @@ const authRoutes = (prisma: PrismaClient): express.Router => {
     ],
     async (req: SignInRequest, res: express.Response): Promise<void> => {
       const results = await authController.signIn(req);
+
+      if (results.code === 200) {
+        res.cookie("session_id", req.sessionID, {
+          maxAge: 1209600000,
+          httpOnly: true,
+        });
+      }
+
       res.status(results.code).send(results);
     }
   )
