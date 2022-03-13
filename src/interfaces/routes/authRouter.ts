@@ -9,6 +9,7 @@ import { AuthController } from "../controllers/AuthController";
 
 /* --- リクエスト ----------------------------------------------------------------------------------------------------- */
 import { SignUpRequest } from "../request/auth/SignUpRequest";
+import {SignInRequest} from "../request/auth/SignInRequest";
 
 
 const router = express.Router();
@@ -108,6 +109,29 @@ const authRoutes = (prisma: PrismaClient): express.Router => {
 
         res.status(results.code).send(results);
       }
+    }
+  )
+
+
+  router.post(
+    "/signIn",
+    [
+      body("email")
+        .exists()
+        .withMessage("email is missing")
+        .isString()
+        .withMessage("Invalid email"),
+      body("password")
+        .exists()
+        .withMessage("password is missing")
+        .isString()
+        .withMessage("Invalid password")
+        .isLength({ min: 0, max: 255 })
+        .withMessage("password must be 0 - 255 character long"),
+    ],
+    async (req: SignInRequest, res: express.Response): Promise<void> => {
+      const results = await authController.signIn(req);
+      res.status(results.code).send(results);
     }
   )
 

@@ -69,8 +69,6 @@ class AuthRepositoryImpl implements AuthRepository {
 
   public async signIn(query: SignInParams): Promise<User> {
 
-    const hashedPassword = await bcrypt.hash(query.password, 10);
-
     const user = await this.prisma.user.findUnique({
       select: {
         id: true,

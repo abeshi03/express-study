@@ -1,7 +1,7 @@
 /* --- フレームワーク、ライブラリー --------------------------------------------------------------------------------------- */
 import { PrismaClient } from "@prisma/client";
 import { validationResult } from "express-validator";
-import {Request, response} from "express";
+import { Request } from "express";
 
 /* --- ユースケース ---------------------------------------------------------------------------------------------------- */
 import { AuthUseCase } from "../../application/usecases/AuthUseCase";
