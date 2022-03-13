@@ -2,6 +2,7 @@
 import express from "express";
 import { body } from "express-validator";
 import { PrismaClient } from "@prisma/client";
+import moment from "moment";
 
 /* --- コントローラー -------------------------------------------------------------------------------------------------- */
 import { AuthController } from "../controllers/AuthController";
@@ -76,6 +77,37 @@ const authRoutes = (prisma: PrismaClient): express.Router => {
         });
       }
       res.status(results.code).send(results)
+    }
+  )
+
+
+  router.post(
+    "/signOut",
+    [],
+    async (req: express.Request, res: express.Response): Promise<void> => {
+
+      try {
+        res.clearCookie("session_id");
+        req.session.destroy(() => {});
+
+        const results = {
+          code: 200,
+          message: "Success",
+          respondedAt: moment().format()
+        }
+
+        res.status(results.code).send(results)
+      } catch (error: unknown) {
+
+        console.error(error);
+        const results = {
+          code: 401,
+          message: "Authentication error",
+          respondedAt: moment().format()
+        }
+
+        res.status(results.code).send(results)
+      }
     }
   )
 
