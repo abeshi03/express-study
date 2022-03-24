@@ -12,6 +12,9 @@ import { AuthRepository } from "../repository/AuthRepository";
 import { SignUpParams } from "../../request/auth/SignUpRequest";
 import { SignInParams } from "../../request/auth/SignInRequest";
 
+/* --- 補助関数 ------------------------------------------------------------------------------------------------------- */
+import { isNotNull } from "../../../utility/typeGuards/isNotNull";
+
 
 class AuthRepositoryImpl implements AuthRepository {
 
@@ -23,13 +26,13 @@ class AuthRepositoryImpl implements AuthRepository {
 
 
   public async checkForUniqueEmail(email: string): Promise<boolean> {
-    const users = await this.prisma.user.findMany();
+    const user = await this.prisma.user.findUnique({
+      where: {
+        email
+      }
+    });
 
-    const userEmails: string[] = users.map((user) => {
-      return user.email;
-    })
-
-    return userEmails.includes(email);
+    return isNotNull(user);
   }
 
 

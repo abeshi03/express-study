@@ -34,6 +34,12 @@ const session_options: session.SessionOptions = {
 
 app.use(session(session_options));
 
+declare module "express-session" {
+  interface SessionData {
+    userId: number;
+  }
+}
+
 app.get("/", (req: express.Request, res: express.Response) => {
   res.send("Hello world!")
 });

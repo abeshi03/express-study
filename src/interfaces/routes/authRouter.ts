@@ -17,7 +17,6 @@ const router = express.Router();
 const authRoutes = (prisma: PrismaClient): express.Router => {
   const authController = new AuthController(prisma);
 
-
   /* --- メールアドレスの重複チェック ------------------------------------------------------------------------------------- */
   router.post(
     "/check-for-unique-email",
@@ -72,11 +71,8 @@ const authRoutes = (prisma: PrismaClient): express.Router => {
     async (req: SignUpRequest, res: express.Response): Promise<void> => {
       const results = await authController.signUp(req);
 
-      if (results.code === 200) {
-        res.cookie("session_id", req.sessionID, {
-          maxAge: 1209600000,
-          httpOnly: true,
-        });
+      if (results.code === 200 && results.data) {
+        req.session.userId = results.data.id
       }
 
       res.status(results.code).send(results)
@@ -90,7 +86,6 @@ const authRoutes = (prisma: PrismaClient): express.Router => {
     async (req: express.Request, res: express.Response): Promise<void> => {
 
       try {
-        res.clearCookie("session_id");
         req.session.destroy(() => {});
 
         const results = {
@@ -135,11 +130,8 @@ const authRoutes = (prisma: PrismaClient): express.Router => {
 
       const results = await authController.signIn(req);
 
-      if (results.code === 200) {
-        res.cookie("session_id", req.sessionID, {
-          maxAge: 1209600000,
-          httpOnly: true,
-        });
+      if (results.code === 200 && results.data) {
+        req.session.userId = results.data.id
       }
 
       res.status(results.code).send(results);
