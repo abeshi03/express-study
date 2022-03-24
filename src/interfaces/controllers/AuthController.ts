@@ -60,13 +60,13 @@ class AuthController {
       return ApiResponse.error(422, errors.array()[0].msg);
     }
 
-    const isEmailUnique: boolean = await this.useCase.checkForUniqueEmail(request.body.email);
-
-    if (isEmailUnique) {
-      return ApiResponse.error(400, "Not unique email");
-    }
-
     try {
+
+      const isEmailUnique: boolean = await this.useCase.checkForUniqueEmail(request.body.email);
+
+      if (isEmailUnique) {
+        return ApiResponse.error(400, "Not unique email");
+      }
 
       const user = await this.useCase.signUp(request.body);
       const response = this.userSerializer.user(user);
