@@ -47,8 +47,8 @@ const authRoutes = (prisma: PrismaClient): express.Router => {
         .withMessage("password is missing")
         .isString()
         .withMessage("Invalid password")
-        .isLength({ min: 0, max: 255 })
-        .withMessage("password must be 0 - 255 character long"),
+        .isLength({ min: 4, max: 255 })
+        .withMessage("password must be 4 - 255 character long"),
       body("name")
         .exists()
         .withMessage("name is missing")
@@ -123,8 +123,8 @@ const authRoutes = (prisma: PrismaClient): express.Router => {
         .withMessage("password is missing")
         .isString()
         .withMessage("Invalid password")
-        .isLength({ min: 0, max: 255 })
-        .withMessage("password must be 0 - 255 character long"),
+        .isLength({ min: 4, max: 255 })
+        .withMessage("password must be 4 - 255 character long"),
     ],
     async (req: SignInRequest, res: express.Response): Promise<void> => {
 
