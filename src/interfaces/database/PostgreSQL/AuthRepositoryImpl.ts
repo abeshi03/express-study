@@ -41,32 +41,28 @@ class AuthRepositoryImpl implements AuthRepository {
 
     const hashedPassword = await bcrypt.hash(query.password, 10);
 
-    const userId = (await this.prisma.user.create({
-      data: {
-        name: query.name,
-        description: query.description,
-        email: query.email,
-        password: hashedPassword,
-        createdAt: new Date()
-      }
-    })).id;
+    const [ user, createUser ] = await this.prisma.$transaction([
+      this.prisma.user.findFirst({
+        where: {
+          email: query.email
+        }
+      }),
+      this.prisma.user.create({
+        data: {
+          name: query.name,
+          description: query.description,
+          email: query.email,
+          password: hashedPassword,
+          createdAt: new Date()
+        }
+      })
+    ]);
 
-    const user = await this.prisma.user.findUnique({
-      select: {
-        id: true,
-        name: true,
-        description: true,
-        email: true,
-        avatarUri: true
-      },
-      where: {
-        id: userId
-      },
-      rejectOnNotFound: true
-    });
+    if (user) {
+      throw new Error("email is unique");
+    }
 
-    return new User(user);
-
+    return new User(createUser);
   }
 
 
