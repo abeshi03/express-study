@@ -40,8 +40,7 @@ class AuthRepositoryImpl implements AuthRepository {
   public async signUp(query: SignUpParams): Promise<User> {
 
     const hashedPassword = await bcrypt.hash(query.password, 10);
-
-    const userId = (await this.prisma.user.create({
+    const user = await this.prisma.user.create({
       data: {
         name: query.name,
         description: query.description,
@@ -49,24 +48,9 @@ class AuthRepositoryImpl implements AuthRepository {
         password: hashedPassword,
         createdAt: new Date()
       }
-    })).id;
-
-    const user = await this.prisma.user.findUnique({
-      select: {
-        id: true,
-        name: true,
-        description: true,
-        email: true,
-        avatarUri: true
-      },
-      where: {
-        id: userId
-      },
-      rejectOnNotFound: true
-    });
+    })
 
     return new User(user);
-
   }
 
 
