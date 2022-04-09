@@ -18,8 +18,8 @@ model User {
   avatarUri   String?   @db.VarChar(200)
   description String    @db.VarChar(200)
   password    String    @db.VarChar(255)
-  Post        Post[]
-  Comment     Comment[]
+  post        Post[]
+  comment     Comment[]
   createdAt   DateTime  @default(now())
   updated_at  DateTime? @updatedAt
 }
@@ -31,7 +31,7 @@ model Post {
   imageUri   String?   @db.VarChar(200)
   createdAt  DateTime  @default(now())
   updated_at DateTime? @updatedAt
-  User       User      @relation(fields: [userId], references: [id])
+  user       User      @relation(fields: [userId], references: [id])
   Comment    Comment[]
 }
 
@@ -42,6 +42,6 @@ model Comment {
   text       String    @db.VarChar(280)
   createdAt  DateTime  @default(now())
   updated_at DateTime? @updatedAt
-  User       User      @relation(fields: [userId], references: [id])
-  Post       Post      @relation(fields: [postId], references: [id])
+  user       User      @relation(fields: [userId], references: [id])
+  post       Post      @relation(fields: [postId], references: [id])
 }

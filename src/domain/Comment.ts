@@ -53,4 +53,4 @@ class Comment {
 }
 
 
-export { Comment };
+export { Comment, CreateCommentPayload };

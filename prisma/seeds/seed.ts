@@ -261,97 +261,97 @@ const postsData: Prisma.PostCreateInput[] = [
   {
     content: `ユーザー1のテスト投稿です！検索test用${text}`,
     imageUri: "http://placekitten.com/200/300",
-    User: { connect: { id: 1 } },
+    user: { connect: { id: 1 } },
     createdAt: moment().format()
   },
   {
     content: `ユーザー1のテスト投稿です！${text}`,
-    User: { connect: { id: 1 } },
+    user: { connect: { id: 1 } },
     createdAt: moment().format()
   },
   {
     content: `ユーザー1のテスト投稿です！${text}`,
-    User: { connect: { id: 1 } },
+    user: { connect: { id: 1 } },
     createdAt: moment().format()
   },
   {
     content: `ユーザー2のテスト投稿です！${text}`,
-    User: { connect: { id: 2 } },
+    user: { connect: { id: 2 } },
     createdAt: moment().format()
   },
   {
     content: `ユーザー2のテスト投稿です！${text}`,
-    User: { connect: { id: 2 } },
+    user: { connect: { id: 2 } },
     createdAt: moment().format()
   },
   {
     content: `ユーザー2のテスト投稿です！${text}`,
-    User: { connect: { id: 2 } },
+    user: { connect: { id: 2 } },
     createdAt: moment().format()
   },
   {
     content: `ユーザー2のテスト投稿です！${text}`,
-    User: { connect: { id: 3 } },
+    user: { connect: { id: 3 } },
     createdAt: moment().format()
   },
   {
     content: `ユーザー3のテスト投稿です！${text}`,
-    User: { connect: { id: 3 } },
+    user: { connect: { id: 3 } },
     createdAt: moment().format()
   },
   {
     content: `ユーザー3のテスト投稿です！${text}`,
-    User: { connect: { id: 3 } },
+    user: { connect: { id: 3 } },
     createdAt: moment().format()
   },
   {
     content: `ユーザー3のテスト投稿です！${text}`,
-    User: { connect: { id: 3 } },
+    user: { connect: { id: 3 } },
     createdAt: moment().format()
   },
   {
     content: `ユーザー3のテスト投稿です！${text}`,
-    User: { connect: { id: 3 } },
+    user: { connect: { id: 3 } },
     createdAt: moment().format()
   },
   {
     content: `ユーザー3のテスト投稿です！${text}`,
-    User: { connect: { id: 3 } },
+    user: { connect: { id: 3 } },
     createdAt: moment().format()
   },
   {
     content: `ユーザー3のテスト投稿です！${text}`,
-    User: { connect: { id: 3 } },
+    user: { connect: { id: 3 } },
     createdAt: moment().format()
   },
   {
     content: `ユーザー3のテスト投稿です！${text}`,
-    User: { connect: { id: 3 } },
+    user: { connect: { id: 3 } },
     createdAt: moment().format()
   },
   {
     content: `ユーザー3のテスト投稿です！${text}`,
-    User: { connect: { id: 3 } },
+    user: { connect: { id: 3 } },
     createdAt: moment().format()
   },
   {
     content: `ユーザー3のテスト投稿です！${text}`,
-    User: { connect: { id: 3 } },
+    user: { connect: { id: 3 } },
     createdAt: moment().format()
   },
   {
     content: `ユーザー3のテスト投稿です！${text}`,
-    User: { connect: { id: 3 } },
+    user: { connect: { id: 3 } },
     createdAt: moment().format()
   },
   {
     content: `ユーザー3のテスト投稿です！${text}`,
-    User: { connect: { id: 3 } },
+    user: { connect: { id: 3 } },
     createdAt: moment().format()
   },
   {
     content: `ユーザー3のテスト投稿です！${text}`,
-    User: { connect: { id: 3 } },
+    user: { connect: { id: 3 } },
     createdAt: moment().format()
   }
 ];
@@ -359,26 +359,26 @@ const postsData: Prisma.PostCreateInput[] = [
 const commentsData: Prisma.CommentCreateInput[] = [
   {
     text: "テストコメント1",
-    User: { connect: { id: 1 } },
-    Post: { connect: { id: 1 } },
+    user: { connect: { id: 1 } },
+    post: { connect: { id: 1 } },
     createdAt: moment().format()
   },
   {
     text: "テストコメント2",
-    User: { connect: { id: 1 } },
-    Post: { connect: { id: 1 } },
+    user: { connect: { id: 1 } },
+    post: { connect: { id: 1 } },
     createdAt: moment().format()
   },
   {
     text: "テストコメント3",
-    User: { connect: { id: 1 } },
-    Post: { connect: { id: 2 } },
+    user: { connect: { id: 1 } },
+    post: { connect: { id: 2 } },
     createdAt: moment().format()
   },
   {
     text: "テストコメント4",
-    User: { connect: { id: 1 } },
-    Post: { connect: { id: 2 } },
+    user: { connect: { id: 1 } },
+    post: { connect: { id: 2 } },
     createdAt: moment().format()
   },
 
