@@ -51,3 +51,6 @@ class Comment {
     this._user = new User(payload.user)
   }
 }
+
+
+export { Comment };
