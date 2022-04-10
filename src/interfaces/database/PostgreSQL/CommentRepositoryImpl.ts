@@ -9,6 +9,7 @@ import { CommentRepository } from "../repository/CommentRepository";
 
 /* --- リクエスト ------------------------------------------------------------------------------------------------------ */
 import { FindCommentListParams } from "../../request/comment/FindCommentListRequest";
+import { CreateCommentParams } from "../../request/comment/CreateCommentRequest";
 
 
 class CommentRepositoryImpl implements CommentRepository {
@@ -40,6 +41,49 @@ class CommentRepositoryImpl implements CommentRepository {
       postComments: comments.map((comment: CreateCommentPayload) => new Comment(comment)),
       totalItemsCount: comments.length
     }
+  }
+
+  public async create(
+    query: CreateCommentParams,
+    userId: number,
+    postId: number
+  ): Promise<number> {
+    const user = await this.prisma.user.findUnique({
+      select: {
+        id: true
+      },
+      where: {
+        id: userId
+      }
+    });
+
+    if (!user) {
+      throw new Error("User not found")
+    }
+
+    const post = await this.prisma.post.findUnique({
+      select: {
+        id: true
+      },
+      where: {
+        id: postId
+      }
+    });
+
+    if (!post) {
+      throw new Error("Post not found")
+    }
+
+    const comment = await this.prisma.comment.create({
+      data: {
+        userId: user.id,
+        postId: post.id,
+        text: query.text,
+        createdAt: new Date()
+      }
+    });
+
+    return comment.id;
   }
 }
 

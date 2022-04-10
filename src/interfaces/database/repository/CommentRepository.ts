@@ -12,9 +12,12 @@ interface CommentRepository {
     postId: number
   ) => Promise<CommentRepository.FindList.ResponseData>;
 
-  create: (query: CreateCommentParams) => Promise<number>;
+  create: (
+    query: CreateCommentParams,
+    userId: number,
+    postId: number
+  ) => Promise<number>;
 }
-
 
 
 namespace CommentRepository {
