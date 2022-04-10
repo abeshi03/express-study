@@ -20,6 +20,10 @@ export interface CommentsResponse {
   totalItemsCount: number;
 }
 
+export interface IdResponse {
+  id: number;
+}
+
 
 export class CommentSerializer {
 
@@ -43,5 +47,9 @@ export class CommentSerializer {
       comments: commentResponse,
       totalItemsCount: items.totalItemsCount
     }
+  }
+
+  public id(id: number): IdResponse {
+    return { id };
   }
 }
