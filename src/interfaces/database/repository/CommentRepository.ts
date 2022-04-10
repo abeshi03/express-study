@@ -3,6 +3,7 @@ import { Comment } from "../../../domain/Comment";
 
 /* --- リクエスト ------------------------------------------------------------------------------------------------------ */
 import { FindCommentListParams } from "../../request/comment/FindCommentListRequest";
+import { CreateCommentParams } from "../../request/comment/CreateCommentRequest";
 
 interface CommentRepository {
 
@@ -10,6 +11,8 @@ interface CommentRepository {
     query: FindCommentListParams,
     postId: number
   ) => Promise<CommentRepository.FindList.ResponseData>;
+
+  create: (query: CreateCommentParams) => Promise<number>;
 }
 
 
