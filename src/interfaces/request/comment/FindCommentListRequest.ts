@@ -7,4 +7,4 @@ export interface FindCommentListParams {
 }
 
 
-export type FindPostListRequest = Request<FindCommentListParams>;
+export type FindCommentListRequest = Request<FindCommentListParams>;
