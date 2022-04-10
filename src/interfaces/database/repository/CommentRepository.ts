@@ -6,7 +6,10 @@ import { FindCommentListParams } from "../../request/comment/FindCommentListRequ
 
 interface CommentRepository {
 
-  findList: (query: FindCommentListParams) => Promise<CommentRepository.FindList.ResponseData>;
+  findList: (
+    query: FindCommentListParams,
+    postId: number
+  ) => Promise<CommentRepository.FindList.ResponseData>;
 }
 
 

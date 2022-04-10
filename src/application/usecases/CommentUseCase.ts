@@ -12,8 +12,12 @@ class CommentUseCase {
   }
 
   /* --- コメント一覧取得 ----------------------------------------------------------------------------------------------- */
-  public findList(query: FindCommentListParams): Promise<CommentRepository.FindList.ResponseData> {
-    return this.repository.findList(query);
+  public findList(
+    query: FindCommentListParams,
+    postId: number
+  )
+    : Promise<CommentRepository.FindList.ResponseData> {
+    return this.repository.findList(query, postId);
   }
 }
 

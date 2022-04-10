@@ -38,7 +38,9 @@ class CommentController {
 
     try {
 
-      const comments = await this.useCase.findList(request.query);
+      const postId = Number(request.params.postId)
+
+      const comments = await this.useCase.findList(request.query, postId);
       const response = await this.commentSerializer.comments(comments);
 
       return ApiResponse.success(response);

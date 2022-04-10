@@ -19,9 +19,13 @@ class CommentRepositoryImpl implements CommentRepository {
   }
 
   public async findList(
-    query: FindCommentListParams = { limit: 15, pageNumber: 1 }
+    query: FindCommentListParams = { limit: 15, pageNumber: 1 },
+    postId: number
   ): Promise<CommentRepository.FindList.ResponseData> {
     const comments = await this.prisma.comment.findMany({
+      where: {
+        postId: postId
+      },
       include: {
         user: true
       },
