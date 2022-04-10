@@ -39,3 +39,5 @@ class CommentRepositoryImpl implements CommentRepository {
   }
 }
 
+
+export { CommentRepositoryImpl };
