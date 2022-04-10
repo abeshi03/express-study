@@ -45,4 +45,31 @@ describe("GET:: /post-comments", () => {
     });
   });
 
+  it("Insufficient limit", async () => {
+    const res = await request(app).get(
+      `${baseUrl}/1/?pageNumber=${pageNumber}`
+    );
+
+    expect(res.status).toEqual(422);
+    expect(res.body.message).toEqual("limit is missing");
+  });
+
+  it("Insufficient pageNumber", async () => {
+    const res = await request(app).get(
+      `${baseUrl}/1/?limit=${limit}`
+    );
+
+    expect(res.status).toEqual(422);
+    expect(res.body.message).toEqual("pageNumber is missing");
+  });
+
+  it("Invalid id", async () => {
+    const res = await request(app).get(
+      `${baseUrl}/"1"/?limit=${limit}&pageNumber=${pageNumber}`
+    );
+
+    expect(res.status).toEqual(422);
+    expect(res.body.message).toEqual("Invalid id");
+  });
+
 });
