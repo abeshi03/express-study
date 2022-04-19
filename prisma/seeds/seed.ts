@@ -7,14 +7,13 @@ const prisma = new PrismaClient();
 const text = "テキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入ります" +
   "テキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入ります";
 
-
 const usersData: Prisma.UserCreateInput[] = [
   {
     email: "example1@test.com",
     name: "ユーザー1",
     description: "宜しくお願いします",
     avatarUri: "http://placekitten.com/200/300",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK", // passwordをハッシュ化した文字列
     createdAt: moment().format()
   },
   {
@@ -22,7 +21,7 @@ const usersData: Prisma.UserCreateInput[] = [
     name: "ユーザー2",
     description: "宜しくお願いします",
     avatarUri: "http://placekitten.com/200/300",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
   {
@@ -30,7 +29,7 @@ const usersData: Prisma.UserCreateInput[] = [
     name: "ユーザー3",
     description: "宜しくお願いします",
     avatarUri: "http://placekitten.com/200/300",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
   {
@@ -38,7 +37,7 @@ const usersData: Prisma.UserCreateInput[] = [
     name: "ユーザー4",
     description: "宜しくお願いします",
     avatarUri: "http://placekitten.com/200/300",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
   {
@@ -46,7 +45,7 @@ const usersData: Prisma.UserCreateInput[] = [
     name: "ユーザー5",
     description: "宜しくお願いします",
     avatarUri: "http://placekitten.com/200/300",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
   {
@@ -54,7 +53,7 @@ const usersData: Prisma.UserCreateInput[] = [
     name: "ユーザー6",
     description: "宜しくお願いします",
     avatarUri: "http://placekitten.com/200/300",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
   {
@@ -62,7 +61,7 @@ const usersData: Prisma.UserCreateInput[] = [
     name: "ユーザー7",
     description: "宜しくお願いします",
     avatarUri: "http://placekitten.com/200/300",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
   {
@@ -70,7 +69,7 @@ const usersData: Prisma.UserCreateInput[] = [
     name: "ユーザー8",
     description: "宜しくお願いします",
     avatarUri: "http://placekitten.com/200/300",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
   {
@@ -78,7 +77,7 @@ const usersData: Prisma.UserCreateInput[] = [
     name: "ユーザー9",
     description: "宜しくお願いします",
     avatarUri: "http://placekitten.com/200/300",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
   {
@@ -86,7 +85,7 @@ const usersData: Prisma.UserCreateInput[] = [
     name: "ユーザー10",
     description: "宜しくお願いします",
     avatarUri: "http://placekitten.com/200/300",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
   {
@@ -94,7 +93,7 @@ const usersData: Prisma.UserCreateInput[] = [
     name: "ユーザー11",
     description: "宜しくお願いします",
     avatarUri: "http://placekitten.com/200/300",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
   {
@@ -102,7 +101,7 @@ const usersData: Prisma.UserCreateInput[] = [
     name: "ユーザー12",
     description: "宜しくお願いします",
     avatarUri: "http://placekitten.com/200/300",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
   {
@@ -110,7 +109,7 @@ const usersData: Prisma.UserCreateInput[] = [
     name: "ユーザー13",
     description: "宜しくお願いします",
     avatarUri: "http://placekitten.com/200/300",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
   {
@@ -118,7 +117,7 @@ const usersData: Prisma.UserCreateInput[] = [
     name: "ユーザー14",
     description: "宜しくお願いします",
     avatarUri: "http://placekitten.com/200/300",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
   {
@@ -126,7 +125,7 @@ const usersData: Prisma.UserCreateInput[] = [
     name: "ユーザー15",
     description: "宜しくお願いします",
     avatarUri: "http://placekitten.com/200/300",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
   {
@@ -134,7 +133,7 @@ const usersData: Prisma.UserCreateInput[] = [
     name: "ユーザー16",
     description: "宜しくお願いします",
     avatarUri: "http://placekitten.com/200/300",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
   {
@@ -142,7 +141,7 @@ const usersData: Prisma.UserCreateInput[] = [
     name: "ユーザー17",
     description: "宜しくお願いします",
     avatarUri: "http://placekitten.com/200/300",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
   {
@@ -150,7 +149,7 @@ const usersData: Prisma.UserCreateInput[] = [
     name: "ユーザー18",
     description: "宜しくお願いします",
     avatarUri: "http://placekitten.com/200/300",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
   {
@@ -158,21 +157,21 @@ const usersData: Prisma.UserCreateInput[] = [
     name: "ユーザー19",
     description: "宜しくお願いします",
     avatarUri: "http://placekitten.com/200/300",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
   {
     email: "example20@test.com",
     name: "ユーザー20",
     description: "宜しくお願いします",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
   {
     email: "example21@test.com",
     name: "ユーザー21",
     description: "宜しくお願いします",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
   {
@@ -180,7 +179,7 @@ const usersData: Prisma.UserCreateInput[] = [
     name: "ユーザー22",
     description: "宜しくお願いします",
     avatarUri: "http://placekitten.com/200/300",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
   {
@@ -188,70 +187,70 @@ const usersData: Prisma.UserCreateInput[] = [
     name: "ユーザー500",
     description: "宜しくお願いします",
     avatarUri: "http://placekitten.com/200/300",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
   {
     email: "example23@test.com",
     name: "ユーザー23",
     description: "宜しくお願いします",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
   {
     email: "example24@test.com",
     name: "ユーザー24",
     description: "宜しくお願いします",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
   {
     email: "example25@test.com",
     name: "ユーザー25",
     description: "宜しくお願いします",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
   {
     email: "example26@test.com",
     name: "ユーザー26",
     description: "宜しくお願いします",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
   {
     email: "example27@test.com",
     name: "ユーザー27",
     description: "宜しくお願いします",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
   {
     email: "example28@test.com",
     name: "ユーザー28",
     description: "宜しくお願いします",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
   {
     email: "example29@test.com",
     name: "ユーザー29",
     description: "宜しくお願いします",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
   {
     email: "example30@test.com",
     name: "ユーザー30",
     description: "宜しくお願いします",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
   {
     email: "example31@test.com",
     name: "ユーザー31",
     description: "宜しくお願いします",
-    password: "password",
+    password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
 ];

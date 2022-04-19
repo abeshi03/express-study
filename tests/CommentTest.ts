@@ -71,5 +71,21 @@ describe("GET:: /post-comments", () => {
     expect(res.status).toEqual(422);
     expect(res.body.message).toEqual("Invalid id");
   });
+});
+
+
+describe("POST:: /post-comments/:postId", () => {
+
+  it("Should post comments", async () => {
+    await request(app).post("/auth/signIn")
+      .send({
+        email: "example1@test.com",
+        password: "password"
+      });
+
+    const res = await request(app).get(`${baseUrl}/1`);
+
+    expect(res.status).toEqual(200);
+  });
 
 });
