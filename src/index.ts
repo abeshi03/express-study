@@ -7,6 +7,7 @@ import session from "express-session";
 /* --- ルーティング ---------------------------------------------------------------------------------------------------- */
 import { userRoutes } from "./interfaces/routes/userRouter";
 import { postRoutes } from "./interfaces/routes/postRouter";
+import { postCommentRoutes } from "./interfaces/routes/commentRouter";
 import { authRoutes } from "./interfaces/routes/authRouter";
 
 
@@ -46,6 +47,7 @@ app.get("/", (req: express.Request, res: express.Response) => {
 
 app.use("/users", userRoutes(prisma));
 app.use("/posts", postRoutes(prisma));
+app.use("/post-comments", postCommentRoutes(prisma));
 app.use("/auth", authRoutes(prisma));
 
 app.get("*", (req, res) => {

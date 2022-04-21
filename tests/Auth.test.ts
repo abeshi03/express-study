@@ -18,7 +18,7 @@ describe("POST /signIn", () => {
 
   it("Should signIn", async () => {
     const res = await request(app).post(`${baseUrl}/signIn`).send({
-      email: "password@password5.com",
+      email: "example1@test.com",
       password: "password"
     });
 

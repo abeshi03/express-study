@@ -2,7 +2,7 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
   previewFeatures = ["interactiveTransactions"]
 }
 
@@ -17,8 +17,9 @@ model User {
   name        String
   avatarUri   String?   @db.VarChar(200)
   description String    @db.VarChar(200)
-  password    String   @db.VarChar(255)
-  posts       Post[]
+  password    String    @db.VarChar(255)
+  post        Post[]
+  comment     Comment[]
   createdAt   DateTime  @default(now())
   updated_at  DateTime? @updatedAt
 }
@@ -31,4 +32,16 @@ model Post {
   createdAt  DateTime  @default(now())
   updated_at DateTime? @updatedAt
   user       User      @relation(fields: [userId], references: [id])
+  Comment    Comment[]
+}
+
+model Comment {
+  id         Int       @id @default(autoincrement())
+  userId     Int
+  postId     Int
+  text       String    @db.VarChar(280)
+  createdAt  DateTime  @default(now())
+  updated_at DateTime? @updatedAt
+  user       User      @relation(fields: [userId], references: [id])
+  post       Post      @relation(fields: [postId], references: [id])
 }
