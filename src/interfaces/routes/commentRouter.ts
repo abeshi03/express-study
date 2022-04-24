@@ -54,7 +54,9 @@ const postCommentRoutes = (prisma: PrismaClient): express.Router => {
     ],
     async (req: express.Request, res: express.Response): Promise<void> => {
 
-      const results = await commentController.create(req, req.session.userId);
+      console.log("user_id: ", req.session.userId);
+
+      const results = await commentController.create(req, req.session.userId ?? 1);
       res.status(results.code).send(results);
     }
   )

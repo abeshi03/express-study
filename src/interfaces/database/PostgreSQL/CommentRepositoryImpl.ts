@@ -31,7 +31,7 @@ class CommentRepositoryImpl implements CommentRepository {
         user: true
       },
       orderBy: {
-        createdAt: "asc"
+        createdAt: "desc"
       },
       skip: (Number(query.pageNumber) - 1) * Number(query.limit),
       take: Number(query.limit)
