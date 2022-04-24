@@ -37,9 +37,15 @@ class CommentRepositoryImpl implements CommentRepository {
       take: Number(query.limit)
     });
 
+    const totalItemsCount = await this.prisma.comment.count({
+      where: {
+        postId: postId
+      },
+    });
+
     return {
       postComments: comments.map((comment: CreateCommentPayload) => new Comment(comment)),
-      totalItemsCount: comments.length
+      totalItemsCount
     }
   }
 
