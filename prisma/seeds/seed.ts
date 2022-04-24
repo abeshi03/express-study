@@ -381,6 +381,60 @@ const commentsData: Prisma.CommentCreateInput[] = [
     createdAt: moment().format()
   },
   {
+    text: "コメントおおおおおコメントおおおおおコメントおおおおおコメントおお",
+    user: { connect: { id: 2 } },
+    post: { connect: { id: 1 } },
+    createdAt: moment().format()
+  },
+  {
+    text: "コメントおおおおおコメントおおおおおコメントおおおおおコメントおお",
+    user: { connect: { id: 2 } },
+    post: { connect: { id: 1 } },
+    createdAt: moment().format()
+  },
+  {
+    text: "コメントおおおおおコメントおおおおおコメントおおおおおコメントおお",
+    user: { connect: { id: 2 } },
+    post: { connect: { id: 1 } },
+    createdAt: moment().format()
+  },
+  {
+    text: "コメントおおおおおコメントおおおおおコメントおおおおおコメントおお",
+    user: { connect: { id: 2 } },
+    post: { connect: { id: 1 } },
+    createdAt: moment().format()
+  },
+  {
+    text: "コメントおおおおおコメントおおおおおコメントおおおおおコメントおお",
+    user: { connect: { id: 2 } },
+    post: { connect: { id: 1 } },
+    createdAt: moment().format()
+  },
+  {
+    text: "コメントおおおおおコメントおおおおおコメントおおおおおコメントおお",
+    user: { connect: { id: 2 } },
+    post: { connect: { id: 1 } },
+    createdAt: moment().format()
+  },
+  {
+    text: "コメントおおおおおコメントおおおおおコメントおおおおおコメントおお",
+    user: { connect: { id: 2 } },
+    post: { connect: { id: 1 } },
+    createdAt: moment().format()
+  },
+  {
+    text: "コメントおおおおおコメントおおおおおコメントおおおおおコメントおお",
+    user: { connect: { id: 2 } },
+    post: { connect: { id: 1 } },
+    createdAt: moment().format()
+  },
+  {
+    text: "コメントおおおおおコメントおおおおおコメントおおおおおコメントおお",
+    user: { connect: { id: 2 } },
+    post: { connect: { id: 1 } },
+    createdAt: moment().format()
+  },
+  {
     text: "コメントおおおおおコメントおおおおおコメントおおおおおコメントおおおおおコメントおおおおおコメントおおおおおコメントおおおおお",
     user: { connect: { id: 2 } },
     post: { connect: { id: 1 } },
