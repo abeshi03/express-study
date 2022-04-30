@@ -1,6 +1,5 @@
 /* --- 実態 ---------------------------------------------------------------------------------------------------------- */
 import { Post } from "../../domain/Post";
-
 /* --- レスポンス ------------------------------------------------------------------------------------------------------ */
 import { UserResponse } from "./UserSerializer";
 
@@ -17,6 +16,10 @@ export interface PostResponse {
   imageUri?: string;
   postedUserData: UserResponse;
   postedDateTime: string;
+  like: {
+    totalCount: number;
+    isPostToLikeByCurrentUser: boolean;
+  }
 }
 
 export interface PostsResponse {
@@ -27,25 +30,39 @@ export interface PostsResponse {
 export class PostSerializer {
 
   /* --- postレスポンス ----------------------------------------------------------------------------------------------- */
-  public post(post: Post): PostResponse {
+  public post(items: PostRepository.Find): PostResponse {
+
     return {
-      id: post.id,
-      content: post.content,
-      imageUri: post.imageUri,
+      id: items.post.id,
+      content: items.post.content,
+      imageUri: items.post.imageUri,
       postedUserData: {
-        id: post.user.id,
-        email: post.user.email,
-        name: post.user.name,
-        description: post.user.name,
-        avatarUri: post.user.avatarUri,
+        id: items.post.user.id,
+        email: items.post.user.email,
+        name: items.post.user.name,
+        description: items.post.user.name,
+        avatarUri: items.post.user.avatarUri,
       },
-      postedDateTime: post.createdAt.toISOString()
+      postedDateTime: items.post.createdAt.toISOString(),
+      like: {
+        totalCount: items.post.like?.length ?? 0,
+        isPostToLikeByCurrentUser: items.isPostToLikeByCurrentUser
+      }
     };
   }
 
   /* --- post一覧レスポンス -------------------------------------------------------------------------------------------- */
-  public posts(items: PostRepository.FindList.ResponseData): PostsResponse {
-    const postResponse = items.posts.map((post) => this.post(post));
+  public posts(items: PostRepository.FindList): PostsResponse {
+
+    const isPostToLikeByCurrentUser = (post: Post): boolean => {
+      if (!post.like || !items.userId) return false;
+      return post.like.map((like) => like.userId).includes(items.userId)
+    }
+
+    const postResponse = items.posts.map((post) => this.post({
+      post,
+      isPostToLikeByCurrentUser: isPostToLikeByCurrentUser(post)
+    }));
     return {
       posts: postResponse
     }
