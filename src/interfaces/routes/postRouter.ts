@@ -34,7 +34,7 @@ const postRoutes = (prisma: PrismaClient): express.Router => {
         .optional().isString().withMessage("Invalid searchByPostContent")
     ],
     async (req: FindPostListRequest, res: express.Response): Promise<void> => {
-      const results = await postController.findList(req);
+      const results = await postController.findList(req, req.session.userId);
       res.status(results.code).send(results)
     }
   )
@@ -49,7 +49,7 @@ const postRoutes = (prisma: PrismaClient): express.Router => {
         .withMessage("Invalid id")
     ],
     async (req: express.Request, res: express.Response): Promise<void> => {
-      const results = await postController.find(req);
+      const results = await postController.find(req, req.session.userId);
       res.status(results.code).send(results);
     }
   )

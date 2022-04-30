@@ -9,6 +9,7 @@ import { PostRepository } from "../repository/PostRepository";
 
 /* --- リクエスト ------------------------------------------------------------------------------------------------------ */
 import { FindPostListParams } from "../../request/post/FindPostListRequest";
+import { FindPostParams } from "../../request/post/FindPostRequest";
 
 
 class PostRepositoryImpl implements PostRepository {
@@ -19,15 +20,19 @@ class PostRepositoryImpl implements PostRepository {
   }
 
 
-  public async findList(query: FindPostListParams = { limit: 5, pageNumber: 1 }): Promise<PostRepository.FindList.ResponseData> {
-    const posts = await this.prisma.post.findMany({
+  public async findList(
+    query: FindPostListParams = { limit: 5, pageNumber: 1 },
+    userId?: number
+  ): Promise<PostRepository.FindList> {
+    const getPosts = await this.prisma.post.findMany({
       where: {
         content: {
           contains: query.searchByPostContent
         }
       },
       include: {
-        user: true
+        user: true,
+        like: true
       },
       orderBy: {
         id: "asc"
@@ -36,27 +41,40 @@ class PostRepositoryImpl implements PostRepository {
       take: Number(query.limit)
     });
 
-    return {
-      posts: posts.map((post: CreatePostPayload) => new Post(post))
-    }
+    const posts = getPosts.map((post: CreatePostPayload) => new Post(post));
 
+    return {
+      posts,
+      userId
+    }
   }
 
 
-  public async find(targetPostId: number): Promise<Post> {
+  public async find(query: FindPostParams): Promise<PostRepository.Find> {
 
     const post = await this.prisma.post.findUnique({
       where: {
-        id: targetPostId
+        id: query.postId
       },
       include: {
-        user: true
+        user: true,
+        like: true,
       },
       rejectOnNotFound: true
     });
 
+    const isPostToLikeByCurrentUser = (): boolean => {
+      if (!query.userId) return false;
 
-    return new Post(post);
+      return post.like.map((postLike) => {
+        return postLike.userId;
+      }).includes(query.userId)
+    }
+
+    return {
+      post: new Post(post),
+      isPostToLikeByCurrentUser: isPostToLikeByCurrentUser()
+    }
   }
 }
 

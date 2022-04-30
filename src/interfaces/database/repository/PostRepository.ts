@@ -3,24 +3,28 @@ import { Post } from "../../../domain/Post";
 
 /* --- リクエスト ------------------------------------------------------------------------------------------------------ */
 import { FindPostListParams } from "../../request/post/FindPostListRequest";
+import { FindPostParams } from "../../request/post/FindPostRequest";
 
 interface PostRepository {
 
   /* --- 投稿一覧取得 -------------------------------------------------------------------------------------------------- */
-  findList: (query: FindPostListParams) => Promise<PostRepository.FindList.ResponseData>;
+  findList: (query: FindPostListParams, userId?: number) => Promise<PostRepository.FindList>;
 
   /* --- 投稿詳細取得 -------------------------------------------------------------------------------------------------- */
-  find: (targetPostId: number) => Promise<Post>;
+  find: (query: FindPostParams) => Promise<PostRepository.Find>;
 }
 
 
 namespace PostRepository {
 
-  export namespace FindList {
+  export type FindList = {
+    posts: Post[];
+    userId?: number;
+  }
 
-    export type ResponseData = {
-      posts: Post[];
-    }
+  export type Find = {
+    post: Post,
+    isPostToLikeByCurrentUser: boolean;
   }
 }
 
