@@ -1,5 +1,6 @@
 /* --- 実態 ---------------------------------------------------------------------------------------------------------- */
 import { CreateUserPayload, User } from "./User";
+import { CreateLikePayload, Like } from "./Like";
 
 interface CreatePostPayload {
   id: number;
@@ -8,6 +9,7 @@ interface CreatePostPayload {
   imageUri?: string | null;
   createdAt: Date;
   user: CreateUserPayload;
+  like?: CreateLikePayload[];
 }
 
 
@@ -18,6 +20,7 @@ class Post {
   private readonly _imageUri?: string | null;
   private readonly _createdAt: Date;
   private readonly _user: User;
+  private readonly _like?: Like[];
 
   public get id(): number {
     return this._id;
@@ -44,6 +47,11 @@ class Post {
     return this._user;
   }
 
+  public get like(): Like[] | undefined {
+    if (!this._like) return undefined;
+    return this._like;
+  }
+
 
   public constructor(payload: CreatePostPayload) {
     this._id = payload.id;
@@ -52,6 +60,9 @@ class Post {
     this._imageUri = payload.imageUri;
     this._createdAt = payload.createdAt
     this._user = new User(payload.user);
+    if (payload.like) {
+      this._like = payload.like.map((like) => new Like(like));
+    }
   }
 }
 

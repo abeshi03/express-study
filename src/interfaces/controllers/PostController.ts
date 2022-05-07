@@ -30,7 +30,7 @@ class PostController {
 
 
   /* --- 投稿一覧取得 -------------------------------------------------------------------------------------------------- */
-  public async findList(request: FindPostListRequest): Promise<ApiResponse<PostsResponse>> {
+  public async findList(request: FindPostListRequest, userId?: number): Promise<ApiResponse<PostsResponse>> {
 
     const errors = validationResult(request);
 
@@ -40,7 +40,7 @@ class PostController {
 
     try {
 
-      const posts = await this.useCase.findList(request.query);
+      const posts = await this.useCase.findList(request.query, userId ?? 1);
       const response = this.serializer.posts(posts);
 
       return ApiResponse.success(response);
@@ -54,7 +54,7 @@ class PostController {
 
 
   /* --- idでの投稿取得 ------------------------------------------------------------------------------------------------ */
-  public async find(request: Request): Promise<ApiResponse<PostResponse>> {
+  public async find(request: Request, userId?: number): Promise<ApiResponse<PostResponse>> {
 
     const errors = validationResult(request);
 
@@ -65,7 +65,10 @@ class PostController {
     try {
 
       const postId = Number(request.params.id);
-      const post = await this.useCase.find(postId);
+      const post = await this.useCase.find({
+        userId: userId ?? 1,
+        postId
+      })
       const response = this.serializer.post(post);
 
       return ApiResponse.success(response);

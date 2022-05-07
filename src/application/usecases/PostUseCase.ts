@@ -1,9 +1,7 @@
-/* --- 実態 ----------------------------------------------------------------------------------------------------------- */
-import { Post } from "../../domain/Post";
-
 /* --- db処理 --------------------------------------------------------------------------------------------------------- */
 import { PostRepository } from "../../interfaces/database/repository/PostRepository";
-import { FindPostListParams, FindPostListRequest } from "../../interfaces/request/post/FindPostListRequest";
+import { FindPostListParams } from "../../interfaces/request/post/FindPostListRequest";
+import { FindPostParams } from "../../interfaces/request/post/FindPostRequest";
 
 
 class PostUseCase {
@@ -14,14 +12,14 @@ class PostUseCase {
   }
 
   /* --- 投稿一覧取得 -------------------------------------------------------------------------------------------------- */
-  public findList(query: FindPostListParams): Promise<PostRepository.FindList.ResponseData> {
-    return this.repository.findList(query);
+  public findList(query: FindPostListParams, userId?: number): Promise<PostRepository.FindList> {
+    return this.repository.findList(query, userId);
   }
 
 
   /* --- idでの投稿取得 ------------------------------------------------------------------------------------------------ */
-  public find(targetPostId: number): Promise<Post> {
-    return this.repository.find(targetPostId);
+  public find(query: FindPostParams): Promise<PostRepository.Find> {
+    return this.repository.find(query);
   }
 }
 

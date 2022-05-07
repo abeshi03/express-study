@@ -455,6 +455,24 @@ const commentsData: Prisma.CommentCreateInput[] = [
 
 ]
 
+const likesData: Prisma.LikeCreateInput[] = [
+  {
+    user: { connect: { id: 1 } },
+    post: { connect: { id: 1 } },
+    createdAt: moment().format()
+  },
+  {
+    user: { connect: { id: 1 } },
+    post: { connect: { id: 2 } },
+    createdAt: moment().format()
+  },
+  {
+    user: { connect: { id: 1 } },
+    post: { connect: { id: 3 } },
+    createdAt: moment().format()
+  },
+]
+
 
 async function createSeedData() {
 
@@ -470,6 +488,10 @@ async function createSeedData() {
 
     for (const comment of commentsData) {
       await prisma.comment.create({ data: comment });
+    }
+
+    for (const like of likesData) {
+      await prisma.like.create({ data: like })
     }
 
   } catch (error: unknown) {
