@@ -471,6 +471,31 @@ const likesData: Prisma.LikeCreateInput[] = [
     post: { connect: { id: 3 } },
     createdAt: moment().format()
   },
+  {
+    user: { connect: { id: 2 } },
+    post: { connect: { id: 1 } },
+    createdAt: moment().format()
+  },
+  {
+    user: { connect: { id: 2 } },
+    post: { connect: { id: 2 } },
+    createdAt: moment().format()
+  },
+  {
+    user: { connect: { id: 3 } },
+    post: { connect: { id: 2 } },
+    createdAt: moment().format()
+  },
+  {
+    user: { connect: { id: 4 } },
+    post: { connect: { id: 2 } },
+    createdAt: moment().format()
+  },
+  {
+    user: { connect: { id: 5 } },
+    post: { connect: { id: 2 } },
+    createdAt: moment().format()
+  },
 ]
 
 

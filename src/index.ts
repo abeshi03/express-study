@@ -14,6 +14,7 @@ import { authRoutes } from "./interfaces/routes/authRouter";
 const app: Application = express();
 const allowedOrigins = ['http://localhost:3000'];
 const options: cors.CorsOptions = {
+  credentials: true,
   origin: allowedOrigins
 };
 
