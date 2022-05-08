@@ -1,10 +1,3 @@
-export const USER_ROLE = {
-  admin: "ADMIN",
-  normalUser: "NORMAL_USER"
-} as const
-
-export type UserRole = typeof USER_ROLE[keyof typeof USER_ROLE];
-
 /* prismaの型定義が任意の場合nullがはいるので任意フィールドはundefined | nullにする */
 interface CreateUserPayload {
   id: number;
@@ -14,6 +7,13 @@ interface CreateUserPayload {
   description: string;
   avatarUri?: string | null;
 }
+
+export const USER_ROLE = {
+  admin: "ADMIN",
+  normalUser: "NORMAL_USER"
+} as const
+
+export type UserRole = typeof USER_ROLE[keyof typeof USER_ROLE];
 
 class User {
   private readonly _id: number;
