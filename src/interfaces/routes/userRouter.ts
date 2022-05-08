@@ -56,7 +56,8 @@ const userRoutes = (prisma: PrismaClient): express.Router => {
         .withMessage("itemsCountPerPaginationPage is missing")
         .isInt()
         .withMessage("invalid itemsCountPerPaginationPage"),
-      query("searchByUserName").optional().isString().withMessage("Invalid searchByUserName")
+      query("searchByUserName").optional().isString().withMessage("Invalid searchByUserName"),
+      query("role").optional().isString().withMessage("Invalid role")
     ],
     async (req: FindUserListRequest, res: express.Response): Promise<void> => {
       const results = await userController.findList(req);
