@@ -12,6 +12,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example1@test.com",
     name: "ユーザー1",
     description: "宜しくお願いします",
+    role: "ADMIN",
     avatarUri: "http://placekitten.com/200/300",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK", // passwordをハッシュ化した文字列
     createdAt: moment().format()
@@ -20,6 +21,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example2@test.com",
     name: "ユーザー2",
     description: "宜しくお願いします",
+    role: "ADMIN",
     avatarUri: "http://placekitten.com/200/300",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
@@ -28,6 +30,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example3@test.com",
     name: "ユーザー3",
     description: "宜しくお願いします",
+    role: "ADMIN",
     avatarUri: "http://placekitten.com/200/300",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
@@ -36,6 +39,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example4@test.com",
     name: "ユーザー4",
     description: "宜しくお願いします",
+    role: "NORMAL_USER",
     avatarUri: "http://placekitten.com/200/300",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
@@ -44,6 +48,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example5@test.com",
     name: "ユーザー5",
     description: "宜しくお願いします",
+    role: "NORMAL_USER",
     avatarUri: "http://placekitten.com/200/300",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
@@ -52,6 +57,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example6@test.com",
     name: "ユーザー6",
     description: "宜しくお願いします",
+    role: "NORMAL_USER",
     avatarUri: "http://placekitten.com/200/300",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
@@ -60,6 +66,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example7@test.com",
     name: "ユーザー7",
     description: "宜しくお願いします",
+    role: "NORMAL_USER",
     avatarUri: "http://placekitten.com/200/300",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
@@ -68,6 +75,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example8@test.com",
     name: "ユーザー8",
     description: "宜しくお願いします",
+    role: "NORMAL_USER",
     avatarUri: "http://placekitten.com/200/300",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
@@ -76,6 +84,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example9@test.com",
     name: "ユーザー9",
     description: "宜しくお願いします",
+    role: "NORMAL_USER",
     avatarUri: "http://placekitten.com/200/300",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
@@ -84,6 +93,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example10@test.com",
     name: "ユーザー10",
     description: "宜しくお願いします",
+    role: "NORMAL_USER",
     avatarUri: "http://placekitten.com/200/300",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
@@ -92,6 +102,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example11@test.com",
     name: "ユーザー11",
     description: "宜しくお願いします",
+    role: "NORMAL_USER",
     avatarUri: "http://placekitten.com/200/300",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
@@ -100,6 +111,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example12@test.com",
     name: "ユーザー12",
     description: "宜しくお願いします",
+    role: "NORMAL_USER",
     avatarUri: "http://placekitten.com/200/300",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
@@ -108,6 +120,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example13@test.com",
     name: "ユーザー13",
     description: "宜しくお願いします",
+    role: "NORMAL_USER",
     avatarUri: "http://placekitten.com/200/300",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
@@ -116,6 +129,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example14@test.com",
     name: "ユーザー14",
     description: "宜しくお願いします",
+    role: "NORMAL_USER",
     avatarUri: "http://placekitten.com/200/300",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
@@ -124,6 +138,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example15@test.com",
     name: "ユーザー15",
     description: "宜しくお願いします",
+    role: "NORMAL_USER",
     avatarUri: "http://placekitten.com/200/300",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
@@ -132,6 +147,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example16@test.com",
     name: "ユーザー16",
     description: "宜しくお願いします",
+    role: "NORMAL_USER",
     avatarUri: "http://placekitten.com/200/300",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
@@ -140,6 +156,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example17@test.com",
     name: "ユーザー17",
     description: "宜しくお願いします",
+    role: "NORMAL_USER",
     avatarUri: "http://placekitten.com/200/300",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
@@ -148,6 +165,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example18@test.com",
     name: "ユーザー18",
     description: "宜しくお願いします",
+    role: "NORMAL_USER",
     avatarUri: "http://placekitten.com/200/300",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
@@ -156,6 +174,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example19@test.com",
     name: "ユーザー19",
     description: "宜しくお願いします",
+    role: "NORMAL_USER",
     avatarUri: "http://placekitten.com/200/300",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
@@ -164,6 +183,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example20@test.com",
     name: "ユーザー20",
     description: "宜しくお願いします",
+    role: "NORMAL_USER",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
@@ -171,6 +191,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example21@test.com",
     name: "ユーザー21",
     description: "宜しくお願いします",
+    role: "NORMAL_USER",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
@@ -178,6 +199,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example22@test.com",
     name: "ユーザー22",
     description: "宜しくお願いします",
+    role: "NORMAL_USER",
     avatarUri: "http://placekitten.com/200/300",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
@@ -186,6 +208,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example500@test.com",
     name: "ユーザー500",
     description: "宜しくお願いします",
+    role: "NORMAL_USER",
     avatarUri: "http://placekitten.com/200/300",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
@@ -194,6 +217,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example23@test.com",
     name: "ユーザー23",
     description: "宜しくお願いします",
+    role: "NORMAL_USER",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
@@ -201,6 +225,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example24@test.com",
     name: "ユーザー24",
     description: "宜しくお願いします",
+    role: "NORMAL_USER",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
@@ -208,6 +233,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example25@test.com",
     name: "ユーザー25",
     description: "宜しくお願いします",
+    role: "NORMAL_USER",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
@@ -215,6 +241,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example26@test.com",
     name: "ユーザー26",
     description: "宜しくお願いします",
+    role: "NORMAL_USER",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
@@ -222,6 +249,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example27@test.com",
     name: "ユーザー27",
     description: "宜しくお願いします",
+    role: "NORMAL_USER",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
@@ -229,6 +257,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example28@test.com",
     name: "ユーザー28",
     description: "宜しくお願いします",
+    role: "NORMAL_USER",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
@@ -236,6 +265,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example29@test.com",
     name: "ユーザー29",
     description: "宜しくお願いします",
+    role: "NORMAL_USER",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
@@ -243,6 +273,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example30@test.com",
     name: "ユーザー30",
     description: "宜しくお願いします",
+    role: "NORMAL_USER",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },
@@ -250,6 +281,7 @@ const usersData: Prisma.UserCreateInput[] = [
     email: "example31@test.com",
     name: "ユーザー31",
     description: "宜しくお願いします",
+    role: "NORMAL_USER",
     password: "$2b$10$PkiF15DG3ewagt.6M03eCOzIXBUGoWNTbGC30qsv8g29NGUkNAnwK",
     createdAt: moment().format()
   },

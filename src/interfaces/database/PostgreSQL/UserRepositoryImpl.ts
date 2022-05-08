@@ -2,7 +2,7 @@
 import { PrismaClient } from "@prisma/client";
 
 /* --- 実態 ---------------------------------------------------------------------------------------------------------- */
-import { User, CreateUserPayload } from "../../../domain/User";
+import { User, CreateUserPayload, USER_ROLE } from "../../../domain/User";
 
 /* --- db関連 -------------------------------------------------------------------------------------------------------- */
 import { UserRepository } from "../repository/UserRepository";
@@ -29,6 +29,7 @@ class UserRepositoryImpl implements UserRepository {
         id: true,
         name: true,
         description: true,
+        role: true,
         email: true,
         avatarUri: true
       },
@@ -71,6 +72,7 @@ class UserRepositoryImpl implements UserRepository {
         id: true,
         name: true,
         description: true,
+        role: true,
         email: true,
         avatarUri: true
       },
@@ -92,6 +94,7 @@ class UserRepositoryImpl implements UserRepository {
         name: query.name,
         description: query.description,
         email: query.email,
+        role: USER_ROLE.normalUser,
         password: "password",
         createdAt: new Date()
       }

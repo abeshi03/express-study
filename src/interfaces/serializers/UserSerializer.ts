@@ -14,6 +14,7 @@ export interface UserResponse {
   id: number;
   email: string;
   name: string;
+  role: string;
   description: string;
   avatarUri?: string;
 }
@@ -30,6 +31,7 @@ export class UserSerializer {
       id: user.id,
       email: user.email,
       name: user.name,
+      role: user.role,
       description: user.description,
       avatarUri: user.avatarUri
     };
