@@ -52,7 +52,8 @@ class UserRepositoryImpl implements UserRepository {
       where: {
         name: {
           contains: query.searchByUserName
-        }
+        },
+        role: query.role
       }
     });
 
