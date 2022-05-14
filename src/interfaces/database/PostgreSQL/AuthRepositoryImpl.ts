@@ -3,7 +3,7 @@ import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
 
 /* --- 実態 ----------------------------------------------------------------------------------------------------------- */
-import { User } from "../../../domain/User";
+import { User, USER_ROLE } from "../../../domain/User";
 
 /* --- db関連 --------------------------------------------------------------------------------------------------------- */
 import { AuthRepository } from "../repository/AuthRepository";
@@ -45,6 +45,7 @@ class AuthRepositoryImpl implements AuthRepository {
         name: query.name,
         description: query.description,
         email: query.email,
+        role: USER_ROLE.normalUser,
         password: hashedPassword,
         createdAt: new Date()
       }
@@ -62,6 +63,7 @@ class AuthRepositoryImpl implements AuthRepository {
         name: true,
         description: true,
         email: true,
+        role: true,
         avatarUri: true,
         password: true
       },

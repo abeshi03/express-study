@@ -40,6 +40,7 @@ export class PostSerializer {
         id: items.post.user.id,
         email: items.post.user.email,
         name: items.post.user.name,
+        role: items.post.user.role,
         description: items.post.user.name,
         avatarUri: items.post.user.avatarUri,
       },
