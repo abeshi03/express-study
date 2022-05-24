@@ -1,4 +1,5 @@
 import { Request } from "express";
+import { UserRole } from "../../../domain/User";
 
 
 export interface CreateUserParams {
@@ -6,6 +7,7 @@ export interface CreateUserParams {
   name: string;
   description: string;
   avatarUri: string;
+  role: UserRole;
 }
 
 export type CreateUserRequest = Request<CreateUserParams>;
